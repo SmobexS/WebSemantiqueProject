@@ -48,7 +48,7 @@ def json2rdf (json_file) :
         if str(row['text'])!='nan' :
             text = row['text']
             for ind, rt in text.items():
-                graph.add((pwss[subject], pwsp.text, Literal(rt, lang=ind)))
+                graph.add((pwss[subject], pwsp.text, Literal(rt.replace("\"", "\'"), lang=ind)))
 
         if type(row['url'])==str :
             url = row['url'].strip()

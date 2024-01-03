@@ -10,8 +10,6 @@ graph = json2rdf(file)
 
 insert_query = generate_insert_query(graph)
 
-print (insert_query)
-
 data = insert_data(insert_query)
 
 visualize_data(data)
