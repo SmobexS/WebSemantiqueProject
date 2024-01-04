@@ -25,7 +25,7 @@ print (len(JsonLD))
 with open('JsonLD.txt', 'w') as file:
     for cop, restos in JsonLD.items():
         for resto, jsonld in restos.items():
-            file.write("Coop \" ", cop, "\" :\n")
-            file.write("\t Restaurant \" ", resto, "\" :\n")
-            file.write("\t\t", jsonld, "\n")
+            file.write(f"Coop \" {cop} \" :\n")
+            file.write(f"\t Restaurant \" {resto} \" :\n")
+            file.write(f"\t\t {jsonld}\n")
             file.write("==========================================================================\n")
