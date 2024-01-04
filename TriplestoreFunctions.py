@@ -1,4 +1,4 @@
-from rdflib import ConjunctiveGraph, URIRef
+from rdflib import ConjunctiveGraph, URIRef, Literal
 from SPARQLWrapper import JSON, TURTLE, SPARQLWrapper, POST
 
 fuseki_endpoint_url = 'http://localhost:3030/ProjetWebSementic/'
@@ -22,7 +22,15 @@ def import_data (fuseki_endpoint_url) :
         for binding in sparql_results['results']['bindings']:
             subject = URIRef(binding['sub']['value'])
             predicate = URIRef(binding['pred']['value'])
-            obj = URIRef(binding['obj']['value'])
+            if binding['obj']['type'] == 'uri':
+                obj = URIRef(binding['obj']['value'])
+            elif binding['obj']['type'] == 'literal':
+                if binding['obj'].keys().__contains__('xml:lang'):
+                    obj = Literal(binding['obj']['value'], lang=binding['obj']['xml:lang'])
+                elif binding['obj'].keys().__contains__('datatype'):
+                    obj = Literal(binding['obj']['value'], datatype=URIRef(binding['obj']['datatype']))
+                else:
+                    obj = Literal(binding['obj']['value'])
             import_result.add((subject, predicate, obj))
 
     except Exception as e:

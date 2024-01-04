@@ -4,6 +4,8 @@ from getJson import *
 from JsonToRdf import *
 from RdfToSparql import *
 from JsonLDScraper import *
+import networkx as nx
+import matplotlib.pyplot as plt
 
 file = get_json()
 
@@ -16,7 +18,7 @@ print("===================================== TRIPELSTORE DATA ==================
 data = insert_data(insert_query)
 
 visualize_data(data)
-
+"""
 print("===================================== JSON-LD =====================================\n")
 
 JsonLD = JsonLDScraper(file)
@@ -29,4 +31,4 @@ with open('JsonLD.txt', 'w') as file:
             file.write(f"\t Restaurant \" {resto} \" :\n")
             file.write(f"\t\t {jsonld}\n")
             file.write("\t==========================================================================\n")
-        file.write("\n==========================================================================\n\n")
+        file.write("\n==========================================================================\n\n")"""
