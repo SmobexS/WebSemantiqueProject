@@ -1,25 +1,9 @@
 from rdflib import Graph, URIRef, Literal, BNode, Namespace
 
-def format_term(term):
-    if isinstance(term, URIRef):
-        return f"<{term}>"
-    elif isinstance(term, Literal):
-        if term.language:
-            return f'"{term}"@{term.language}'
-        elif term.datatype:
-            return f'"{term}"^^<{term.datatype}>'
-        else:
-            return f'"{term}"'
-
 def generate_insert_query(graph):
     insert_query = "INSERT DATA {\n"
-
-    for subj, pred, obj in graph:
-        subject = format_term(subj)
-        predicate = format_term(pred)
-        obj = format_term(obj)
-
-        insert_query += f"  {subject} {predicate} {obj} .\n"
+        
+    insert_query += f"  {graph} .\n"
 
     insert_query += "}"
 
@@ -28,12 +12,7 @@ def generate_insert_query(graph):
 def generate_delete_query(graph):
     delete_query = "DELETE DATA {\n"
 
-    for subj, pred, obj in graph:
-        subject = format_term(subj)
-        predicate = format_term(pred)
-        obj = format_term(obj)
-
-        delete_query += f"  {subject} {predicate} {obj} .\n"
+    insert_query += f"  {graph} .\n"
 
     delete_query += "}"
 
@@ -53,9 +32,3 @@ def generate_update_query(o_triples, n_triples):
     update_query += "}"
 
     return update_query
-
-def search_predicat(predicat):
-    search_query = "SELECT ?sub ?pred ?obj WHERE {\n"
-    search_query += f"  ?sub <{predicat}> ?obj .\n"
-    search_query += "}"
-    return search_query

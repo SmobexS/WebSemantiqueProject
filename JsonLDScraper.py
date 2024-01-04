@@ -23,8 +23,6 @@ def JsonLDScraper (json_file) :
         else :
             continue
 
-    print("Le nombre de cooperatives : ", len(coops_restaurants_urls))
-
     for coop_restaurants_url in coops_restaurants_urls:
 
         response = requests.get(coop_restaurants_url)
@@ -45,6 +43,12 @@ def JsonLDScraper (json_file) :
             if json_ld:
                 try:
                     json_ld_data = json.loads(json_ld.string)
+
+                    idd = json_ld_data["@id"].replace("/api/restaurants", coop_url + "/" + country +"/restaurant")
+                    json_ld_data["@id"] = idd
+                    address = json_ld_data["address"]["@id"].replace("/api/addresses", coop_url + "/" + country +"/addresses")
+                    json_ld_data["address"]["@id"] = address
+         
                     all_restaurants[coop_restaurants_url][restaurant_url] = json_ld_data
                 except json.JSONDecodeError:
                     print("Erreur lors du décodage JSON-LD")
