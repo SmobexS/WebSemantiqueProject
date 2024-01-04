@@ -1,5 +1,5 @@
 from rdflib import ConjunctiveGraph, URIRef
-from SPARQLWrapper import JSON, SPARQLWrapper, POST
+from SPARQLWrapper import JSON, TURTLE, SPARQLWrapper, POST
 
 fuseki_endpoint_url = 'http://localhost:3030/ProjetWebSementic/'
 
@@ -60,4 +60,3 @@ def update_data(update_query):
 def visualize_data (data):
     for row in data:
         print(row)
-

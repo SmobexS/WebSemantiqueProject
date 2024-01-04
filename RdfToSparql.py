@@ -53,3 +53,9 @@ def generate_update_query(o_triples, n_triples):
     update_query += "}"
 
     return update_query
+
+def search_predicat(predicat):
+    search_query = "SELECT ?sub ?pred ?obj WHERE {\n"
+    search_query += f"  ?sub <{predicat}> ?obj .\n"
+    search_query += "}"
+    return search_query
