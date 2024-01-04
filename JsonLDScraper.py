@@ -23,6 +23,8 @@ def JsonLDScraper (json_file) :
         else :
             continue
 
+    print("Le nombre de cooperatives : ", len(coops_restaurants_urls))
+
     for coop_restaurants_url in coops_restaurants_urls:
 
         response = requests.get(coop_restaurants_url)
