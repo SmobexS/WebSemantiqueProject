@@ -66,7 +66,7 @@ def JsonLDScraper (json_file) :
                 except json.JSONDecodeError:
                     print("Erreur lors du décodage JSON-LD")
 
-    with open('JsonLD.txt', 'w') as file:
+    with open('JsonLD.txt', 'w', encoding="utf-8") as file:
         for cop, restos in all_restaurants.items():
             file.write(f"Coop \" {cop} \" :\n")
             for resto, jsonld in restos.items():

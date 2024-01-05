@@ -1,3 +1,4 @@
+import codecs
 from rdflib import URIRef, Literal, BNode
 
 def format_term(term):
@@ -11,14 +12,11 @@ def format_term(term):
         elif term.datatype:
             return f'"{term}"^^<{term.datatype}>'
         else:
-            term = term.replace('"', '\\"')
-            term = term.replace('\n', '\\n')
-            term = term.replace('\r', '\\r')
-            term = term.replace('\t', '\\t')
-            term = term.replace('\b', '\\b')
-            term = term.replace('\f', '\\f')
-            term = term.replace('\\', '\\\\')
-            return f'"{term}"'
+
+            term = term.replace('"', '\"')
+            term = term.replace("'", "\'")
+
+            return f'"""{term}"""'
 
 def generate_insert_query(graph):
     insert_query = "INSERT DATA {\n"
