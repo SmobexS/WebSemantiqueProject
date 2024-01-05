@@ -57,6 +57,13 @@ def delete_data():
     triplets.setQuery(delete_query)
     triplets.query()
 
+def search_data(search_query):
+    
+    triplets = SPARQLWrapper(fuseki_endpoint_url + 'query')
+    triplets.setMethod(POST)
+    triplets.setQuery(search_query)
+    triplets.query()
+
 def visualize_data (data):
     for row in data:
         print(row)
