@@ -3,8 +3,7 @@ from SPARQLWrapper import JSON, SPARQLWrapper, POST
 
 fuseki_endpoint_url = 'http://localhost:3030/ProjetWebSementic/'
 
-
-def import_data (fuseki_endpoint_url) : 
+def import_data (fuseki_endpoint_url='http://localhost:3030/ProjetWebSementic/') : 
 
     try:
         triplets = SPARQLWrapper(fuseki_endpoint_url + 'query')
@@ -12,13 +11,10 @@ def import_data (fuseki_endpoint_url) :
         triplets.setReturnFormat(JSON)
         triplets.setQuery("SELECT * WHERE {?sub ?pred ?obj .}")
 
-        # Obtenir les résultats de la requête SPARQL
         sparql_results = triplets.query().convert()
 
-        # Initialiser le graph RDF
         import_result = ConjunctiveGraph()
 
-        # Charger les résultats dans le graph RDF
         for binding in sparql_results['results']['bindings']:
             if binding['sub']['type'] == 'uri':
                 subject = URIRef(binding['sub']['value'])
@@ -60,17 +56,6 @@ def delete_data():
     triplets.setMethod(POST)
     triplets.setQuery(delete_query)
     triplets.query()
-
-    return(import_data(fuseki_endpoint_url))
-
-def update_data(update_query):
-    
-    triplets = SPARQLWrapper(fuseki_endpoint_url + 'update')
-    triplets.setMethod(POST)
-    triplets.setQuery(update_query)
-    triplets.query()
-
-    return(import_data(fuseki_endpoint_url))
 
 def visualize_data (data):
     for row in data:

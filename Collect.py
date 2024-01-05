@@ -3,7 +3,7 @@ from getJson import *
 from JsonToRdf import *
 from RdfToSparql import *
 from JsonLDScraper import *
-from JsonLD2Turtle import *
+from JsonLD2Graph import *
 
 delete_data()
 
@@ -15,7 +15,7 @@ json_ld = JsonLDScraper(file)
 data_comb = ConjunctiveGraph()
 for cop, restos in json_ld.items():
     for resto, jsonld in restos.items():
-        graph_jld = jsonld_to_turtle(jsonld)
+        graph_jld = jsonld_to_graph(jsonld)
         graph_jld.add((URIRef(cop), pwsp.CanDeliverFoodOf, URIRef(resto)))
         insert_query = generate_insert_query(graph_jld)
         data_comb = insert_data(insert_query)
