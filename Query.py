@@ -63,6 +63,7 @@ def generate_opening_hours_query(restaurant_uri):
     return query
 
 def execute_sparql_query(endpoint_url, query):
+    
     sparql = SPARQLWrapper(endpoint_url)
     sparql.setQuery(query)
     sparql.setReturnFormat(JSON)
