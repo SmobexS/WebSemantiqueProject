@@ -52,7 +52,9 @@ def insert_data(insert_query):
 
     return(import_data(fuseki_endpoint_url))
 
-def delete_data(delete_query):
+def delete_data():
+    
+    delete_query = "DELETE WHERE {?sub ?pred ?obj .}"
     
     triplets = SPARQLWrapper(fuseki_endpoint_url + 'update')
     triplets.setMethod(POST)

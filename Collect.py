@@ -5,6 +5,8 @@ from RdfToSparql import *
 from JsonLDScraper import *
 from JsonLD2Turtle import *
 
+delete_data()
+
 file = get_json()
 graph = json2rdf(file)
 insert_query = generate_insert_query(graph)
