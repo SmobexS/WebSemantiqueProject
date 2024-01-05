@@ -1,5 +1,5 @@
-import codecs
 from rdflib import URIRef, Literal, BNode
+from UnicodeToStr import *
 
 def format_term(term):
     if isinstance(term, URIRef):
@@ -13,10 +13,14 @@ def format_term(term):
             return f'"{term}"^^<{term.datatype}>'
         else:
 
-            term = term.replace('"', '\"')
-            term = term.replace("'", "\'")
-
-            return f'"""{term}"""'
+            term = unicodeTostr(term)
+            
+            term = term.replace("\n", "")
+            term = term.replace("\r", "")
+            term = term.replace("\t", "")
+            term = term.replace("\\", "")
+            
+            return f'"{term}"'
 
 def generate_insert_query(graph):
     insert_query = "INSERT DATA {\n"

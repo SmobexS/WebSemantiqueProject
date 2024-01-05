@@ -5,7 +5,6 @@ from RdfToSparql import *
 from JsonLDScraper import *
 from JsonLD2Turtle import *
 
-
 file = get_json()
 graph = json2rdf(file)
 insert_query = generate_insert_query(graph)
@@ -20,4 +19,6 @@ for cop, restos in json_ld.items():
         data_comb = insert_data(insert_query)
 
 data_comb = data_comb.serialize(destination="combined_rdf.txt" ,format='turtle')
+
+
 
