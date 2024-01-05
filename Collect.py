@@ -1,9 +1,10 @@
+from JsonLD2Graph import jsonld_to_graph
 from TriplestoreFunctions import *
 from getJson import *
 from JsonToRdf import *
 from RdfToSparql import *
 from JsonLDScraper import *
-from JsonLD2Graph import *
+from Query import *
 
 delete_data()
 
@@ -19,6 +20,7 @@ for cop, restos in json_ld.items():
         graph_jld.add((URIRef(cop), pwsp.CanDeliverFoodOf, URIRef(resto)))
         insert_query = generate_insert_query(graph_jld)
         data_comb = insert_data(insert_query)
+
 
 data_comb = data_comb.serialize(destination="combined_rdf.txt" ,format='turtle')
 
