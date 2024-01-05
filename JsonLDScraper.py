@@ -2,19 +2,22 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import json
-from rdflib import Graph, ConjunctiveGraph, Namespace, URIRef, Literal
 from collections import defaultdict
-from urllib.parse import urlparse
+from urllib.parse import urlparse , urlunparse
 
 def parse_url(url):
     parsed_url = urlparse(url)
     main_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
     return(main_url)
 
+def parse_url_contry(url):
+    parsed_url = urlparse(url)
+    main_url_with_path = urlunparse((parsed_url.scheme, parsed_url.netloc, parsed_url.path, '', '', ''))
+    return(main_url_with_path)
+
 
 def JsonLDScraper (json_file) :
     data = pd.read_json(json_file)
-    graph = ConjunctiveGraph()
 
     all_restaurants = defaultdict(lambda : defaultdict(dict))
 
@@ -33,6 +36,7 @@ def JsonLDScraper (json_file) :
     for coop_restaurants_url in coops_restaurants_urls:
 
         coop_url = parse_url(coop_restaurants_url)
+        coop_url_contry = parse_url_contry(coop_restaurants_url)
 
         response = requests.get(coop_restaurants_url)
         html_content = response.text
@@ -55,11 +59,20 @@ def JsonLDScraper (json_file) :
 
                     idd = json_ld_data["@id"]=restaurant_url
                     json_ld_data["@id"] = idd
-                    address = json_ld_data["address"]["@id"].replace("/api/addresses", coop_url + "/" + country +"/addresses")
+                    address = json_ld_data["address"]["@id"].replace("/api/addresses", coop_url_contry +"/addresses")
                     json_ld_data["address"]["@id"] = address
          
                     all_restaurants[coop_url][restaurant_url] = json_ld_data
                 except json.JSONDecodeError:
                     print("Erreur lors du décodage JSON-LD")
+
+    with open('JsonLD.txt', 'w') as file:
+        for cop, restos in all_restaurants.items():
+            file.write(f"Coop \" {cop} \" :\n")
+            for resto, jsonld in restos.items():
+                file.write(f"\t Restaurant \" {resto} \" :\n")
+                file.write(f"\t\t {jsonld}\n")
+                file.write("\t==========================================================================\n")
+            file.write("\n==========================================================================\n\n")
 
     return(all_restaurants)
