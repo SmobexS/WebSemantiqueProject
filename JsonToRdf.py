@@ -70,6 +70,8 @@ def json2rdf (json_file) :
             delivery_form_url = row['delivery_form_url'].strip()
             graph.add((pwss[subject], pwsp.delivery_form_url, URIRef(delivery_form_url)))
 
+        graph.add((pwss[subject], pwsp.CoopOf, URIRef("https://coopcycle.org/")))
+
     graph.serialize(destination='output.ttl', format='turtle', encoding="utf-8")
 
     return(graph)

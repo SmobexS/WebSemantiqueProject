@@ -1,9 +1,34 @@
-from rdflib import Graph, URIRef, Literal, BNode, Namespace
+from rdflib import URIRef, Literal, BNode
+
+def format_term(term):
+    if isinstance(term, URIRef):
+        return f"<{term}>"
+    elif isinstance(term, BNode):
+        return f"_:b{term}"
+    elif isinstance(term, Literal):
+        if term.language:
+            return f'"{term}"@{term.language}'
+        elif term.datatype:
+            return f'"{term}"^^<{term.datatype}>'
+        else:
+            term = term.replace('"', '\\"')
+            term = term.replace('\n', '\\n')
+            term = term.replace('\r', '\\r')
+            term = term.replace('\t', '\\t')
+            term = term.replace('\b', '\\b')
+            term = term.replace('\f', '\\f')
+            term = term.replace('\\', '\\\\')
+            return f'"{term}"'
 
 def generate_insert_query(graph):
     insert_query = "INSERT DATA {\n"
-        
-    insert_query += f"  {graph} .\n"
+
+    for subj, pred, obj in graph:
+        subject = format_term(subj)
+        predicate = format_term(pred)
+        obj = format_term(obj)
+
+        insert_query += f"  {subject} {predicate} {obj} .\n"
 
     insert_query += "}"
 
@@ -12,7 +37,12 @@ def generate_insert_query(graph):
 def generate_delete_query(graph):
     delete_query = "DELETE DATA {\n"
 
-    insert_query += f"  {graph} .\n"
+    for subj, pred, obj in graph:
+        subject = format_term(subj)
+        predicate = format_term(pred)
+        obj = format_term(obj)
+
+        delete_query += f"  {subject} {predicate} {obj} .\n"
 
     delete_query += "}"
 

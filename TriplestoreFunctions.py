@@ -1,5 +1,5 @@
-from rdflib import ConjunctiveGraph, URIRef, Literal
-from SPARQLWrapper import JSON, TURTLE, SPARQLWrapper, POST
+from rdflib import ConjunctiveGraph, URIRef, Literal, BNode
+from SPARQLWrapper import JSON, SPARQLWrapper, POST
 
 fuseki_endpoint_url = 'http://localhost:3030/ProjetWebSementic/'
 
@@ -20,10 +20,15 @@ def import_data (fuseki_endpoint_url) :
 
         # Charger les résultats dans le graph RDF
         for binding in sparql_results['results']['bindings']:
-            subject = URIRef(binding['sub']['value'])
+            if binding['sub']['type'] == 'uri':
+                subject = URIRef(binding['sub']['value'])
+            elif binding['sub']['type'] == 'bnode':
+                subject = BNode(binding['sub']['value'])
             predicate = URIRef(binding['pred']['value'])
             if binding['obj']['type'] == 'uri':
                 obj = URIRef(binding['obj']['value'])
+            elif binding['obj']['type'] == 'bnode':
+                obj = BNode(binding['obj']['value'])
             elif binding['obj']['type'] == 'literal':
                 if binding['obj'].keys().__contains__('xml:lang'):
                     obj = Literal(binding['obj']['value'], lang=binding['obj']['xml:lang'])

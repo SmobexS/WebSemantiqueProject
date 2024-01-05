@@ -1,12 +1,10 @@
-from rdflib import Graph, Namespace
-from JsonLDScraper import *
-
-graph = Graph()
+from rdflib import ConjunctiveGraph, Namespace
 
 SCHEMA = Namespace('http://schema.org/')
 XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
 
-def jsonld_to_rdf(jsonld_data):
+def jsonld_to_turtle(jsonld_data):
     graph = ConjunctiveGraph()
     graph.parse(data=jsonld_data, format='json-ld')
+
     return graph

@@ -4,6 +4,13 @@ import pandas as pd
 import json
 from rdflib import Graph, ConjunctiveGraph, Namespace, URIRef, Literal
 from collections import defaultdict
+from urllib.parse import urlparse
+
+def parse_url(url):
+    parsed_url = urlparse(url)
+    main_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
+    return(main_url)
+
 
 def JsonLDScraper (json_file) :
     data = pd.read_json(json_file)
@@ -25,6 +32,8 @@ def JsonLDScraper (json_file) :
 
     for coop_restaurants_url in coops_restaurants_urls:
 
+        coop_url = parse_url(coop_restaurants_url)
+
         response = requests.get(coop_restaurants_url)
         html_content = response.text
         soup = BeautifulSoup(html_content, 'html.parser')
@@ -44,12 +53,12 @@ def JsonLDScraper (json_file) :
                 try:
                     json_ld_data = json.loads(json_ld.string)
 
-                    idd = json_ld_data["@id"].replace("/api/restaurants", coop_url + "/" + country +"/restaurant")
+                    idd = json_ld_data["@id"]=restaurant_url
                     json_ld_data["@id"] = idd
                     address = json_ld_data["address"]["@id"].replace("/api/addresses", coop_url + "/" + country +"/addresses")
                     json_ld_data["address"]["@id"] = address
          
-                    all_restaurants[coop_restaurants_url][restaurant_url] = json_ld_data
+                    all_restaurants[coop_url][restaurant_url] = json_ld_data
                 except json.JSONDecodeError:
                     print("Erreur lors du décodage JSON-LD")
 
