@@ -2093,6 +2093,11 @@
             ns1:opens "12:30" ],
         [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:30" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "12:30" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:30" ;
             ns1:dayOfWeek "Monday",
                 "Thursday",
                 "Tuesday",
@@ -7366,7 +7371,7 @@
                 "Wednesday" ;
             ns1:opens "17:01" ],
         [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "20:00" ;
+            ns1:closes "15:00" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
                 "Thursday",
@@ -7535,6 +7540,10 @@
     ns1:image <https://kooglof.coopcycle.org/media/cache/restaurant_thumbnail/65/6d/656dcf995bde6.png> ;
     ns1:name "Promo ! 🔥 One Street 🍔" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:45" ;
+            ns1:dayOfWeek "Sunday" ;
+            ns1:opens "18:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:45" ;
             ns1:dayOfWeek "Sunday" ;
             ns1:opens "18:00" ],
@@ -9327,6 +9336,11 @@
     ns1:image <https://lapajara.coopcycle.org/media/cache/restaurant_thumbnail/60/48/604899c58c32e.webp> ;
     ns1:name "La Dorrego" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "16:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "13:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "16:00" ;
             ns1:dayOfWeek "Friday",
                 "Saturday" ;
@@ -11721,6 +11735,11 @@
                 "Saturday" ;
             ns1:opens "18:30" ],
         [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "22:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "18:30" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "13:45" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -11890,6 +11909,37 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
+            ns1:opens "12:00" ] ;
+    ns1:potentialAction [ a ns1:OrderAction ;
+            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
+            ns1:target [ a ns1:EntryPoint ;
+                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
+                    ns1:inLanguage "fr" ;
+                    ns1:urlTemplate "https://naofood.coopcycle.org/fr/restaurant/69-paws-hot-dog" ] ] ;
+    ns1:sameAs <https://www.facebook.com/PawsHotDog/> .
+
+<https://naofood.coopcycle.org/fr/restaurant/69-paws-hot-dog> a ns1:Restaurant ;
+    ns1:address <https://naofood.coopcycle.org/fr/shops/addresses/45851> ;
+    ns1:bannerImage "https://naofood.coopcycle.org/media/cache/restaurant_banner/61/68/61684651ddfc3.jpg" ;
+    ns1:description "Depuis 2017, PAWS regale les Nantais.e.s, la carte de PAWS est entierement fait maison, avec le maximum de produits bio, locaux et source avec soin, jusqu'au pain des hot dog confectionnes quotidiennement sur place.Vous pouvez commander notre carte de hot dog avec le choix de differentes saucisses artisanales.Saucisse de francfort, saucisse au muscadet, saucisse chipouillette (moitie chipolatas-andouillette), saucisse vegetarienne bio.Vous pouvez si vous le souhaite choisir votre hot dog en version vegane.Nous vous proposons egalement de commander une belle selection  de tapas fait maison.Pour accompagner votre repas, vous trouverez une large gamme de boissons avec et sans alcool, vins natures, biere local aerofab, ou encore ginger beer ou kombucha en plus des softs classique.Bon appetit" ;
+    ns1:image <https://naofood.coopcycle.org/media/cache/restaurant_thumbnail/61/68/61684651ddfc3.jpg> ;
+    ns1:name "PAWS HOT DOG" ;
+    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:45" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Thursday" ;
+            ns1:opens "19:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:45" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "12:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:45" ;
+            ns1:dayOfWeek "Saturday" ;
             ns1:opens "12:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
