@@ -67,12 +67,12 @@ def get_open_restaurants():
 
 
 # Second query to get restaurants in a particular zone or at a maximum distance from some location.
-def get_restaurants_by_place(day, time, coordinates, max_distance):
-    location_criteria = get_location_criteria() 
-    print(location_criteria['type'])
-    search_query = get_restaurants_by_place(day, time,location_criteria['type'] , coordinates, max_distance)
-    visualize(search_query)
-    return search_query
+#def get_restaurants_by_place(day, time, coordinates, max_distance):
+#   location_criteria = get_location_criteria() 
+#    print(location_criteria['type'])
+#    search_query = get_restaurants_by_place(day, time,location_criteria['type'] , coordinates, max_distance)
+#    visualize(search_query)
+#    return search_query
 
 #Third query to get restaurants accepting delivery below a certain price.
 def get_restaurants_by_max_delivery_price(day, time, max_price):

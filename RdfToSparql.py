@@ -1,6 +1,7 @@
 from rdflib import URIRef, Literal, BNode
 from TriplestoreFunctions import search_data
-from UnicodeToStr import *
+from unicodeToStr import *
+import requests 
 
 def format_term(term):
     if isinstance(term, URIRef):
@@ -168,18 +169,29 @@ def get_lat_long_for_place(coordinates):
 
 def get_by_max_price(day, time, max_price=None):
     query = """
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX ns: <http://example.org/ontology/restaurant#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema>
+        PREFIX pwp: <https://projectw9s.com/predicate/>
+        PREFIX pwo: <https://projectw9s.com/object/>
+        PREFIX pws: <https://projectw9s.com/subject/>
+        PREFIX schema: <http://schema.org/>
 
-    SELECT ?restaurant ?name ?delivery_cost
-    WHERE {
-        ?restaurant rdf:type ns:Restaurant .
-        ?restaurant ns:isOpenAt ?openTime .
-        ?restaurant ns:hasDelivery true .
-        ?restaurant ns:deliveryCost ?delivery_cost .
 
-        FILTER(?openTime = "%s" && ?delivery_cost <= %s)
+        SELECT ?restaurant ?delivery_cost
+        WHERE {
+            ?restaurant a schema:Restaurant ;
+              schema:openingHoursSpecification [schema:opens ?openingTime;
+                                                schema:closes ?closingTime];
+              schema:potentialAction[
+               a schema:OrderAction;
+             schema:priceSpecification[
+                a schema:DeliveryChargeSpecification;
+              schema:eligibleTransactionVolume[
+               a schema:PriceSpecification;
+              schema:price ?delivery_cost ]]]
+
+        FILTER(?openingTime <= "%s" && ?closingTime > "%s" && ?delivery_cost <= "%s")
     }
-    """ % (time, max_price)
-
+    """ % (time,time ,max_price)
+    print(query)
     return query
