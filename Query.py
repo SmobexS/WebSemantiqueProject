@@ -1,32 +1,48 @@
 from RdfToSparql import *
 from TriplestoreFunctions import *
 from Date_time import *
+from prettytable import PrettyTable
 
-date_filter = get_date_from_user()
-time_filter = get_time_from_user()
+dates = get_date_from_user()
+day = dates[0]
+date_string = dates[1]
+time_filter = get_time_from_user(date_string)
 
-search_query = generate_search_query(date_filter, time_filter)
+search_query = generate_search_query(day, time_filter)
 data = search_data(search_query)
 
-nbr_resultat = len(data)-1
-
-table = [data["head"]["vars"]]
+table = PrettyTable()
+table.field_names = data["head"]["vars"]
 for binding in data["results"]["bindings"]:
-    table.append([binding["restaurant"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"]])
+    table.add_row([binding["restaurant"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"]])
+
+nbr_resultat = len(table.rows)
 
 if nbr_resultat == 0:
     print("No restaurant is open at this time. Try an other time.")
 else:
     print(f"{nbr_resultat} restaurants are open at this time.")
-    nb = input("How many restaurants do you want to see ? (All by default) : ") or nbr_resultat
-    nb = int(nb)
-    if nb > nbr_resultat:
-        nb = nbr_resultat
-    
-    table_print = table[:nb+1]
+    valide = False
 
-    for row in table_print:
-        for cell in row:
-            print(cell, end='\t')
-        print()
+    nb = input("How many restaurants do you want to see ? (All by default if you press Enter) : ") or nbr_resultat
+    
+    min = 0
+
+    while valide == False:
+        nb = int(nb)
+        if nb >= nbr_resultat:
+            nb = nbr_resultat
+            valide = True
+
+        table_print = table[min:nb+1]
+
+        print(table_print)
+
+        if nb < nbr_resultat:
+            d = input("Do you want to see more restaurants ? (y/n) : ")
+            if d.lower() == "y":
+                min = nb + 1
+                nb += 10
+            else:
+                valide = True
 

@@ -26,9 +26,9 @@ def get_date_from_user() :
     print("The chosen date is : ", date_string)
     day = dateStringToDay(date_string)
     
-    return day
+    return (day, date_string)
 
-def get_time_from_user() :
+def get_time_from_user(date_string) :
     valid_time = False
 
     while valid_time == False:
@@ -36,7 +36,7 @@ def get_time_from_user() :
         try:
             time_chek = datetime.strptime(time_string, "%H:%M")
             time_chek = time_chek.strftime("%H:%M")
-            if time_chek < datetime.now().strftime("%H:%M"):
+            if time_chek < datetime.now().strftime("%H:%M") and date_string == datetime.now().strftime("%d-%m-%Y"):
                 print("Invalid time format. Please try again.")
             else:
                 valid_time = True
