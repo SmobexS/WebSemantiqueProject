@@ -1,3 +1,4 @@
+from CoordOperations import *
 from RdfToSparql import *
 from TriplestoreFunctions import *
 from Date_time import *
@@ -25,21 +26,35 @@ def get_location_criteria():
     print("3. By distance from a place")
     choice = input("Enter your choice (1 or 2 or 3): ")
     if choice == "1":
-        city = input("Enter city: ")
-        city = unicodeTostr(city)
-        max_distance = 0
-        return {"type":"city" ,"coordinates": city, "max_distance": max_distance}
+        list_of_cities = get_list_of_cities()
+        print("List of cities:\n")
+        for i in range(len(list_of_cities)):
+            print(f"{i+1}. {list_of_cities[i]}")
+        city = int(input("choose a city (1 or 2 etc.): "))
+        if city > 0 and city <= len(list_of_cities):
+            return {"type":"city" ,"coordinates": list_of_cities[city-1]}
+        else :
+            print("Invalid city. Please try again.")
+            return get_location_criteria()
     elif choice == "2":
         latitude = input("Enter latitude: ")
         longitude = input("Enter longitude: ")
-        max_distance = input("Enter maximum distance in kilometers: ")
+        if validate_coordinates(latitude, longitude):
+            max_distance = float(input("Enter maximum distance in kilometers: "))
+        else :
+            print("Invalid coordinates. Please try again.")
+            return get_location_criteria()
         return {"type":"geocord" ,"coordinates": (latitude, longitude), "max_distance": max_distance}
     elif choice == "3":
         place = input("Enter the name of the place: ")
-        max_distance = input("Enter maximum distance in kilometers: ")
-        return {"type":"address" ,"coordinates": place, "max_distance": max_distance}
+        if valid_place(place):
+            max_distance = float(input("Enter maximum distance in kilometers: "))
+        else :
+            print("Invalid place. Please try again.")
+            return get_location_criteria()
+        return {"type":"address" ,"coordinates": get_coordinates(place), "max_distance": max_distance}
     else:
-        print("Invalid choice. Please choose 1 or 2.")
+        print("Invalid choice. Please choose 1 or 2 or 3.")
         return get_location_criteria()
 
    
@@ -55,7 +70,7 @@ def get_open_restaurants():
 def get_restaurants_by_place(day, time, coordinates, max_distance):
     location_criteria = get_location_criteria() 
     print(location_criteria['type'])
-    search_query = get_by_place(day, time,location_criteria['type'] , coordinates, max_distance)
+    search_query = get_restaurants_by_place(day, time,location_criteria['type'] , coordinates, max_distance)
     visualize(search_query)
     return search_query
 
@@ -113,6 +128,23 @@ def get_user_preferences(uri):
     print(" User preferences :::--->", user_preferences)
     return user_preferences
 
+         
+def get_restaurants_by_place():
+    day, time = get_date_time()
+    location_criteria = get_location_criteria()
+    search_query = search_by_place(day, time, location_criteria["type"], location_criteria["coordinates"])
+    data = search_data(search_query)
+    if location_criteria["type"] == "city":
+        if len(data["results"]["bindings"]) == 0:
+            result = (data, 0)
+        else:
+            result = (data, 2)
+    else:
+        result = find_restaurent_within_max_distance(data, location_criteria["coordinates"], location_criteria["max_distance"])
+    table = data_table(result[0], location_criteria["type"])
+    nbr_resultat = len(table.rows)
+    visualize_table(nbr_resultat, result[1], table)
+
 
 def main():
     parser = argparse.ArgumentParser(description="CoopCycle restaurants query program:")
@@ -155,6 +187,9 @@ def main():
             print("Error: When using --rank-by, --user-preferences is required.")
         else:
             print("Error: --rank-by option is required.")
+
+   
+
 
 if __name__ == "__main__":
     main()

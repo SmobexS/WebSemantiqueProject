@@ -1,16 +1,24 @@
 from prettytable import PrettyTable
 
-def data_table(data):
+def data_table(data, type):
     table = PrettyTable()
     table.field_names = data["head"]["vars"]
-    for binding in data["results"]["bindings"]:
-        table.add_row([binding["restaurant"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"]])
+    if type == "city":
+        for binding in data["results"]["bindings"]:
+            table.add_row([binding["restaurant"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"]])
+    else:
+        for binding in data["results"]["bindings"]:
+            table.add_row([binding["restaurant"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"], binding["distance from your location(m)"]["value"]])
 
     return(table)
 
-def visualize_table (nbr_resultat, table):
-    if nbr_resultat == 0:
+def visualize_table (nbr_resultat, code_er, table):
+    if code_er == 0:
         print("No restaurant is open at this time. Try an other time.")
+    elif code_er == 1:
+        print("No restaurant found in the given location and distance. Try an other location or distance.")
+    elif code_er == 3:
+        print("No restaurant found in the given city. Try an other city.")
     else:
         print(f"{nbr_resultat} restaurants are open at this time.")
         valide = False
