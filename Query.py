@@ -56,17 +56,32 @@ def get_restaurants_by_place():
     nbr_resultat = len(table.rows)
     visualize_table(nbr_resultat, table)
 
+# Third query to get restaurants accepting delivery below a certain price.
+def get_restaurants_by_max_price_delivery():
+    day, time = get_date_time()
+    max_price = float(input("Enter maximum delivery price: "))
+    search_query = search_by_max_price_delivery(day, time, max_price)
+    data = search_data(search_query)
+    table = data_table(data)
+    nbr_resultat = len(table.rows)
+    visualize_table(nbr_resultat, table)
+
+
+
 def main():
     print("Choose an option:")
     print("1. Get open restaurants at a specific date and time")
     print("2. Get restaurants by location criteria")
-    choice = input("Enter your choice (1 or 2): ")
+    print("3. Get restaurants by delivery")
+    choice = input("Enter your choice (1 or 2 or 3): ")
     if choice == "1":
         get_open_restaurants()
     elif choice == "2":
         get_restaurants_by_place()
+    elif choice == "3":
+        get_restaurants_by_max_price_delivery()
     else:
-        print("Invalid choice. Please choose 1 or 2.")
+        print("Invalid choice. Please choose 1, 2, or 3.")
 
 if __name__ == "__main__":
     main()

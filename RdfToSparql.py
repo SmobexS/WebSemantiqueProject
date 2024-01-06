@@ -145,3 +145,23 @@ def get_lat_long_for_place(coordinates):
     except requests.exceptions.RequestException as err:
         print("Request Error:", err)
         return None, None
+    
+
+
+def search_by_max_price_delivery(day, time, max_price):
+    query = """
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX ns: <http://example.org/ontology/restaurant#>
+
+    SELECT ?restaurant ?name ?delivery_cost
+    WHERE {
+        ?restaurant rdf:type ns:Restaurant .
+        ?restaurant ns:isOpenAt ?openTime .
+        ?restaurant ns:hasDelivery true .
+        ?restaurant ns:deliveryCost ?delivery_cost .
+
+        FILTER(?openTime = "%s" && ?delivery_cost <= %s)
+    }
+    """ % (time, max_price)
+
+    return query
