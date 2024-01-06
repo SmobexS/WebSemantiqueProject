@@ -35,3 +35,29 @@ def generate_insert_query(graph):
     insert_query += "}"
 
     return insert_query
+
+def generate_search_query(date, time):
+    search_query = "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n"
+    search_query += "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
+    search_query += "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
+    search_query += "PREFIX pwp:<https://ProjectW9s.com/predicate/>\n"
+    search_query += "PREFIX pwo:<https://ProjectW9s.com/object/>\n"
+    search_query += "PREFIX pws:<https://ProjectW9s.com/subject/>\n"
+    search_query += "PREFIX schema: <http://schema.org/>\n"
+    search_query += "SELECT ?restaurant ?name ?openingTime ?closingTime ?address\n"
+    search_query += "WHERE {\n"
+    search_query += "?restaurant a schema:Restaurant ;\n"
+    search_query += "schema:name ?name;\n"
+    search_query += "schema:address ?address_link;\n"
+    search_query += "schema:openingHoursSpecification [\n"
+    search_query += "schema:opens ?openingTime ;\n"
+    search_query += "schema:closes ?closingTime ;\n"
+    search_query += "schema:dayOfWeek ?dayOfWeek\n"
+    search_query += "] .\n"
+    search_query += "?address_link a schema:PostalAddress;\n"
+    search_query += "schema:streetAddress ?address.\n"
+  
+    search_query += f"FILTER (?dayOfWeek = \"{date}\" && ?openingTime <= \"{time}\" && ?closingTime > \"{time}\")\n"
+    search_query += "}\n"
+
+    return search_query
