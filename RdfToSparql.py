@@ -155,14 +155,14 @@ class RdfToSparQL:
     def get_by_max_price(self,day, time, max_price=None):
         query = """
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX ns: <http://example.org/ontology/restaurant#>
+        PREFIX schema: <http://schema.org/>
 
         SELECT ?restaurant ?name ?delivery_cost
         WHERE {
-            ?restaurant rdf:type ns:Restaurant .
-            ?restaurant ns:isOpenAt ?openTime .
-            ?restaurant ns:hasDelivery true .
-            ?restaurant ns:deliveryCost ?delivery_cost .
+            ?restaurant rdf:type schema:Restaurant .
+            ?restaurant schema:isOpenAt ?openTime .
+            ?restaurant schema:hasDelivery true .
+            ?restaurant schema:deliveryCost ?delivery_cost .
 
             FILTER(?openTime = "%s" && ?delivery_cost <= %s)
         }
