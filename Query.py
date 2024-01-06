@@ -1,85 +1,73 @@
 from RdfToSparql import *
 from TriplestoreFunctions import *
+from Date_time import *
+from DataToTable import * 
 
-from rdflib import Graph, URIRef, Literal, BNode
-from SPARQLWrapper import SPARQLWrapper, JSON
+"""
+Main class for query generator and executor
 
-def generate_opening_hours_query(restaurant_uri):
-    query = f"""
-    PREFIX ns1: <"""+restaurant_uri+""">
+"""
+def visualize_data(nbr_resultat, table):
+    visualize_table(nbr_resultat, table)
 
-    SELECT ?restaurant ?opens ?closes
-    WHERE {
-      ?restaurant a ns1:Restaurant ;
-                  ns1:openingHoursSpecification ?openingHours .
+def get_date_time():
+  dates = get_date_from_user()
+  day = dates[0]
+  date_string = dates[1]
+  time_filter = get_time_from_user(date_string)
+  return day,time
 
-      OPTIONAL {
-        ?openingHours ns1:dayOfWeek "Monday" ;
-                      ns1:opens ?opensMonday ;
-                      ns1:closes ?closesMonday .
-      }
 
-      OPTIONAL {
-        ?openingHours ns1:dayOfWeek "Tuesday" ;
-                      ns1:opens ?opensTuesday ;
-                      ns1:closes ?closesTuesday .
-      }
+def get_location_criteria():
+    print("Choose how to search for restaurants:")
+    print("1. By latitude and longitude")
+    print("2. By distance from a place")
+    choice = input("Enter your choice (1 or 2): ")
+    if choice == "1":
+        latitude = input("Enter latitude: ")
+        longitude = input("Enter longitude: ")
+        return {"latitude": latitude, "longitude": longitude}
+    elif choice == "2":
+        place = input("Enter the name of the place: ")
+        max_distance = input("Enter maximum distance in kilometers: ")
+        return {"place": place, "max_distance": max_distance}
+    else:
+        print("Invalid choice. Please choose 1 or 2.")
+        return get_location_criteria()
 
-      OPTIONAL {
-        ?openingHours ns1:dayOfWeek "Wednesday" ;
-                      ns1:opens ?opensWednesday ;
-                      ns1:closes ?closesWednesday .
-      }
+   
+# First query that looks for restaurants that are open at a given date and time 
+def get_open_restaurants():
+  day, time = get_date_time()
+  search_query = generate_search_query(day, time)
+  data = search_data(search_query)
+  table = data_table(data)
+  nbr_resultat = len(table.rows)
+  visualize_data(nbr_resultat,table)
+  return table, nbr_resultat
 
-      OPTIONAL {
-        ?openingHours ns1:dayOfWeek "Thursday" ;
-                      ns1:opens ?opensThursday ;
-                      ns1:closes ?closesThursday .
-      }
 
-      OPTIONAL {
-        ?openingHours ns1:dayOfWeek "Friday" ;
-                      ns1:opens ?opensFriday ;
-                      ns1:closes ?closesFriday .
-      }
+# Second query to get restaurants in a particular zone or at a maximum distance from some location.
+def get_restaurants_by_place():
+    day, time = get_date_time()
+    location_criteria = get_location_criteria()
+    search_query = search_by_place(day, time, **location_criteria)
+    data = search_data(search_query)
+    table = data_table(data)
+    nbr_resultat = len(table.rows)
+    visualize_data(nbr_resultat, table)
 
-      OPTIONAL {
-        ?openingHours ns1:dayOfWeek "Saturday" ;
-                      ns1:opens ?opensSaturday ;
-                      ns1:closes ?closesSaturday .
-      }
+def main():
+    print("Choose an option:")
+    print("1. Get open restaurants at a specific date and time")
+    print("2. Get restaurants by location criteria")
+    choice = input("Enter your choice (1 or 2): ")
+    if choice == "1":
+        get_open_restaurants()
+    elif choice == "2":
+        get_restaurants_by_place()
+    else:
+        print("Invalid choice. Please choose 1 or 2.")
 
-      OPTIONAL {
-        ?openingHours ns1:dayOfWeek "Sunday" ;
-                      ns1:opens ?opensSunday ;
-                      ns1:closes ?closesSunday .
-      }
-
-      BIND(COALESCE(?opensMonday, ?opensTuesday, ?opensWednesday, ?opensThursday, ?opensFriday, ?opensSaturday, ?opensSunday) AS ?opens)
-      BIND(COALESCE(?closesMonday, ?closesTuesday, ?closesWednesday, ?closesThursday, ?closesFriday, ?closesSaturday, ?closesSunday) AS ?closes)
-    }
-    """
-
-    return query
-
-def execute_sparql_query(endpoint_url, query):
-    
-    sparql = SPARQLWrapper(endpoint_url)
-    sparql.setQuery(query)
-    sparql.setReturnFormat(JSON)
-
-    try:
-        results = sparql.query().convert()
-        return results['results']['bindings']
-    except Exception as e:
-        print(f"Error executing SPARQL query: {e}")
-        return None
-
-  
-def generate_query(restaurant_uris):
-    queries = []
-    for restaurant_uri in restaurant_uris:
-        query = generate_opening_hours_query(restaurant_uri)
-        queries.append(query)
-
-    return queries
+if __name__ == "__main__":
+    main()
