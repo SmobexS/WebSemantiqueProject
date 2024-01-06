@@ -63,7 +63,8 @@ def generate_search_query(date, time):
 
     return search_query
 
-def search_by_place(day, time, type, coordinates, max_distance):
+
+def get_by_place(day, time, type, coordinates, max_distance):
     search_query = (
         "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n"
         "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
@@ -95,34 +96,33 @@ def search_by_place(day, time, type, coordinates, max_distance):
     elif type == "city":
         latitude, longitude = get_lat_long_for_place(coordinates)
 
-    if latitude is not None and longitude is not None :
+    if latitude is not None and longitude is not None:
         if type == "address" or type == "geocord":
             search_query += (
-                    "?address_link a schema:PostalAddress;\n"
-                    "schema:geo ?coordinates .\n"
-                    "?coordinates a schema:GeoCoordinates;\n"
-                    "schema:longitude ?longitude ;\n"
-                    "schema:latitude ?latitude ;\n"
-                    f"FILTER (geof:distance(?location, geof:point({latitude}, {longitude}), {max_distance}))\n"
-                    f"FILTER (?dayOfWeek = \"{day}\" && ?openingTime <= \"{time}\" && ?closingTime > \"{time}\")\n"
-                    "}"
-                )
+                "?address_link a schema:PostalAddress;\n"
+                "schema:geo ?coordinates .\n"
+                "?coordinates a schema:GeoCoordinates;\n"
+                "schema:longitude ?longitude ;\n"
+                "schema:latitude ?latitude .\n"
+                f"FILTER (geof:distance(?coordinates, geof:point({longitude}, {latitude}), {max_distance})) .\n"
+                f"FILTER (?dayOfWeek = \"{day}\" && ?openingTime <= \"{time}\" && ?closingTime > \"{time}\")\n"
+                "}"
+            )
         elif type == "city":
             search_query += (
-                    "?cooplink pwp:coopcycle_url ?coopurl;\n"
-                    "pwp:city ?city.\n"
-                    "?coopurl pwp:CanDeliverFoodOf ?restaurant;\n"
-                    f"FILTER (?city = \"{coordinates}\" && ?dayOfWeek = \"{day}\" && ?openingTime <= \"{time}\" && ?closingTime > \"{time}\")\n"
-                    "}"
-                )
-    else : 
-        if type == "address" :
+                "?cooplink pwp:coopcycle_url ?coopurl;\n"
+                "pwp:city ?city.\n"
+                "?coopurl pwp:CanDeliverFoodOf ?restaurant;\n"
+                f"FILTER (?city = \"{coordinates}\" && ?dayOfWeek = \"{day}\" && ?openingTime <= \"{time}\" && ?closingTime > \"{time}\")\n"
+                "}"
+            )
+    else:
+        if type == "address":
             print(f"Unable to get coordinates for the place: {coordinates}")
-        elif type == "geocord" :
+        elif type == "geocord":
             print(f"Unable to get coordinates for the latitude: {latitude} and longitude: {longitude}")
-        elif type == "city" :
+        elif type == "city":
             print(f"Unable to get city: {coordinates}")
-
     return search_query
 
 
@@ -148,7 +148,7 @@ def get_lat_long_for_place(coordinates):
     
 
 
-def search_by_max_price_delivery(day, time, max_price):
+def get_by_max_price(day, time, max_price=None):
     query = """
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     PREFIX ns: <http://example.org/ontology/restaurant#>
