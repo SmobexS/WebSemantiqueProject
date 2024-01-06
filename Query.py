@@ -1,7 +1,7 @@
 from RdfToSparql import *
 from TriplestoreFunctions import *
 from Date_time import *
-from prettytable import PrettyTable
+from DataToTable import * 
 
 dates = get_date_from_user()
 day = dates[0]
@@ -11,10 +11,7 @@ time_filter = get_time_from_user(date_string)
 search_query = generate_search_query(day, time_filter)
 data = search_data(search_query)
 
-table = PrettyTable()
-table.field_names = data["head"]["vars"]
-for binding in data["results"]["bindings"]:
-    table.add_row([binding["restaurant"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"]])
+table = data_table(data)
 
 nbr_resultat = len(table.rows)
 
