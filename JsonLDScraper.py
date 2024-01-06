@@ -76,4 +76,3 @@ def JsonLDScraper (json_file) :
             file.write("\n==========================================================================\n\n")
 
     return(all_restaurants)
-

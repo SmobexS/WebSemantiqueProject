@@ -5,6 +5,7 @@ from JsonToRdf import *
 from RdfToSparql import *
 from JsonLDScraper import *
 from Query import *
+from JsonLD2Graph import *
 
 delete_data()
 

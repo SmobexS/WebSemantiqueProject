@@ -1,4 +1,4 @@
-from prettytable import PrettyTable
+from prettytable import *
 
 def data_table(data):
     table = PrettyTable()

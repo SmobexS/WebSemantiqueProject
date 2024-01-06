@@ -2056,18 +2056,18 @@
     ns1:image <https://colibri.coopcycle.org/media/cache/restaurant_thumbnail/63/bd/63bd35f26ecb3.jpg> ;
     ns1:name "CU.QU. Cucina di Quartiere" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "22:30" ;
-            ns1:dayOfWeek "Friday",
-                "Thursday" ;
-            ns1:opens "19:30" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:30" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "00:30" ] ;
+            ns1:opens "00:30" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "22:30" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday" ;
+            ns1:opens "19:30" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -2086,6 +2086,11 @@
             ns1:dayOfWeek "Friday",
                 "Saturday" ;
             ns1:opens "19:30" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:30" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "12:30" ],
         [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:30" ;
             ns1:dayOfWeek "Monday",
@@ -2268,14 +2273,6 @@
     ns1:image <https://coursiers-stephanois.coopcycle.org/media/cache/restaurant_thumbnail/60/23/6023989c637c5.jpg> ;
     ns1:name "La Taverne de Maitre Kanter" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "21:30" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "18:30" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:00" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -2283,7 +2280,15 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "11:45" ] ;
+            ns1:opens "11:45" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:30" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "18:30" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
@@ -2369,19 +2374,19 @@
     ns1:image <https://coursiers-stephanois.coopcycle.org/media/cache/restaurant_thumbnail/65/67/656750af3ff9b.png> ;
     ns1:name "L'Alsacien" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Wednesday" ;
+            ns1:opens "11:45" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:30" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "18:15" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:00" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Wednesday" ;
-            ns1:opens "11:45" ] ;
+            ns1:opens "18:15" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
@@ -2756,6 +2761,14 @@
     ns1:image <https://coursiers-stephanois.coopcycle.org/media/cache/restaurant_thumbnail/65/60/6560c86bcbbd9.jpg> ;
     ns1:name "Basilic & Co" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:30" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "18:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:00" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -2763,15 +2776,7 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "11:30" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "21:30" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "18:00" ] ;
+            ns1:opens "11:30" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
@@ -2794,6 +2799,10 @@
     ns1:image <https://coursiers-stephanois.coopcycle.org/media/cache/restaurant_thumbnail/65/60/6560c7fcd7237.jpg> ;
     ns1:name "Restaurant Anatolie" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:30" ;
+            ns1:dayOfWeek "Saturday" ;
+            ns1:opens "12:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "15:30" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -2807,11 +2816,7 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "19:00" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "21:30" ;
-            ns1:dayOfWeek "Saturday" ;
-            ns1:opens "12:00" ] ;
+            ns1:opens "19:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
@@ -3257,7 +3262,6 @@
         <https://coursiersmontpellier.coopcycle.org/fr/restaurant/31-a-la-braise-grillades-au-feu-de-bois>,
         <https://coursiersmontpellier.coopcycle.org/fr/restaurant/37-les-demoiselles-de-montpellier>,
         <https://coursiersmontpellier.coopcycle.org/fr/restaurant/39-super-star-kebab>,
-        <https://coursiersmontpellier.coopcycle.org/fr/restaurant/40-pizzeria-don-peppino>,
         <https://coursiersmontpellier.coopcycle.org/fr/restaurant/44-oh-my-bowl>,
         <https://coursiersmontpellier.coopcycle.org/fr/restaurant/62-lucky-days>,
         <https://coursiersmontpellier.coopcycle.org/fr/restaurant/66-zapie-street-food-polonais>,
@@ -3266,6 +3270,7 @@
         <https://coursiersmontpellier.coopcycle.org/fr/restaurant/78-mon-shop-a-cookies-restaurant>,
         <https://coursiersmontpellier.coopcycle.org/fr/restaurant/8-le-puja-cuisine-indienne-et-mauricienne>,
         <https://coursiersmontpellier.coopcycle.org/fr/restaurant/89-krispy-s-burger-poulet-frit>,
+        <https://coursiersmontpellier.coopcycle.org/fr/restaurant/96-el-pueblo>,
         <https://coursiersmontpellier.coopcycle.org/fr/restaurant/97-sham-bourak> .
 
 <https://coursiersmontpellier.coopcycle.org/fr/restaurant/128-rock-n-rolls-mtp> a ns1:Restaurant ;
@@ -3562,27 +3567,6 @@
                     ns1:inLanguage "fr" ;
                     ns1:urlTemplate "https://coursiersmontpellier.coopcycle.org/fr/restaurant/39-super-star-kebab" ] ] .
 
-<https://coursiersmontpellier.coopcycle.org/fr/restaurant/40-pizzeria-don-peppino> a ns1:Restaurant ;
-    ns1:address <https://coursiersmontpellier.coopcycle.org/fr/shops/addresses/3014> ;
-    ns1:bannerImage "https://coursiersmontpellier.coopcycle.org/media/cache/restaurant_banner/65/6d/656de89d35ac9.png" ;
-    ns1:description "Pizzas artisanales🍕" ;
-    ns1:image <https://coursiersmontpellier.coopcycle.org/media/cache/restaurant_thumbnail/65/46/6546ab83ae357.png> ;
-    ns1:name "Pizzeria Don Peppino🍕" ;
-    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "21:40" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "18:45" ] ;
-    ns1:potentialAction [ a ns1:OrderAction ;
-            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
-            ns1:target [ a ns1:EntryPoint ;
-                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
-                    ns1:inLanguage "fr" ;
-                    ns1:urlTemplate "https://coursiersmontpellier.coopcycle.org/fr/restaurant/40-pizzeria-don-peppino" ] ] .
-
 <https://coursiersmontpellier.coopcycle.org/fr/restaurant/44-oh-my-bowl> a ns1:Restaurant ;
     ns1:address <https://coursiersmontpellier.coopcycle.org/fr/shops/addresses/3158> ;
     ns1:bannerImage "https://coursiersmontpellier.coopcycle.org/media/cache/restaurant_banner/65/6d/656de06fc7082.jpg" ;
@@ -3763,15 +3747,6 @@
     ns1:image <https://coursiersmontpellier.coopcycle.org/media/cache/restaurant_thumbnail/65/46/6546a72b7a5e5.png> ;
     ns1:name "Le Puja / Cuisine Indienne et Mauricienne 🍲" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:40" ;
-            ns1:dayOfWeek "Friday",
-                "Monday",
-                "Saturday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "11:45" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:40" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -3780,7 +3755,16 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "18:45" ] ;
+            ns1:opens "18:45" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:40" ;
+            ns1:dayOfWeek "Friday",
+                "Monday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -3814,6 +3798,35 @@
                     ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
                     ns1:inLanguage "fr" ;
                     ns1:urlTemplate "https://coursiersmontpellier.coopcycle.org/fr/restaurant/89-krispy-s-burger-poulet-frit" ] ] .
+
+<https://coursiersmontpellier.coopcycle.org/fr/restaurant/96-el-pueblo> a ns1:Restaurant ;
+    ns1:address <https://coursiersmontpellier.coopcycle.org/fr/shops/addresses/13381> ;
+    ns1:bannerImage "https://coursiersmontpellier.coopcycle.org/media/cache/restaurant_banner/65/6e/656e514fdf92c.png" ;
+    ns1:description "Restaurant authentique Mexicain🌯🥑🌮" ;
+    ns1:image <https://coursiersmontpellier.coopcycle.org/media/cache/restaurant_thumbnail/62/2c/622c982aeb8cb.png> ;
+    ns1:name "El Pueblo 🌮" ;
+    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:40" ;
+            ns1:dayOfWeek "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "19:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:40" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:45" ] ;
+    ns1:potentialAction [ a ns1:OrderAction ;
+            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
+            ns1:target [ a ns1:EntryPoint ;
+                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
+                    ns1:inLanguage "fr" ;
+                    ns1:urlTemplate "https://coursiersmontpellier.coopcycle.org/fr/restaurant/96-el-pueblo" ] ] ;
+    ns1:sameAs <https://www.restaurant-elpueblo-montpellier.com/> .
 
 <https://coursiersmontpellier.coopcycle.org/fr/restaurant/97-sham-bourak> a ns1:Restaurant ;
     ns1:address <https://coursiersmontpellier.coopcycle.org/fr/shops/addresses/13786> ;
@@ -3862,6 +3875,14 @@
     ns1:streetAddress "7 Rue de l'Universite, Montpellier, France" ;
     ns1:telephone "+33981879915" .
 
+<https://coursiersmontpellier.coopcycle.org/fr/shops/addresses/13381> a ns1:PostalAddress ;
+    ns1:geo [ a ns1:GeoCoordinates ;
+            ns1:latitude 4.3613e+01 ;
+            ns1:longitude 3.87486e+00 ] ;
+    ns1:name "El Pueblo 🌮" ;
+    ns1:streetAddress "4 Rue de Candolle, 34000 Montpellier, France" ;
+    ns1:telephone "+33777691561" .
+
 <https://coursiersmontpellier.coopcycle.org/fr/shops/addresses/13786> a ns1:PostalAddress ;
     ns1:geo [ a ns1:GeoCoordinates ;
             ns1:latitude 4.36208e+01 ;
@@ -3901,14 +3922,6 @@
     ns1:name "Super star kebab 🥙" ;
     ns1:streetAddress "30 Avenue Georges Clemenceau, 34000 Montpellier, France" ;
     ns1:telephone "+33699102424" .
-
-<https://coursiersmontpellier.coopcycle.org/fr/shops/addresses/3014> a ns1:PostalAddress ;
-    ns1:geo [ a ns1:GeoCoordinates ;
-            ns1:latitude 4.36123e+01 ;
-            ns1:longitude 3.874735e+00 ] ;
-    ns1:name "Pizzeria Don Peppino🍕" ;
-    ns1:streetAddress "13 Rue Sainte-Croix, 34000 Montpellier, France" ;
-    ns1:telephone "+33467528975" .
 
 <https://coursiersmontpellier.coopcycle.org/fr/shops/addresses/30462> a ns1:PostalAddress ;
     ns1:geo [ a ns1:GeoCoordinates ;
@@ -4107,6 +4120,11 @@
             ns1:dayOfWeek "Thursday",
                 "Tuesday",
                 "Wednesday" ;
+            ns1:opens "18:30" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:45" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
             ns1:opens "18:30" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
@@ -4122,12 +4140,6 @@
     ns1:image <https://cyclome.coopcycle.org/media/cache/restaurant_thumbnail/62/68/6268381fd9b43.jpg> ;
     ns1:name "Oncle Heraclite Pizza" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:45" ;
-            ns1:dayOfWeek "Friday",
-                "Thursday",
-                "Wednesday" ;
-            ns1:opens "11:45" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:35" ;
             ns1:dayOfWeek "Sunday",
                 "Thursday",
@@ -4138,7 +4150,13 @@
             ns1:closes "21:45" ;
             ns1:dayOfWeek "Friday",
                 "Saturday" ;
-            ns1:opens "18:15" ] ;
+            ns1:opens "18:15" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:45" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Wednesday" ;
+            ns1:opens "11:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -4227,6 +4245,12 @@
     ns1:image <https://cyclome.coopcycle.org/media/cache/restaurant_thumbnail/64/4a/644a4b56274e0.png> ;
     ns1:name "Le Namaste" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:00" ;
+            ns1:dayOfWeek "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:30" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:30" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
@@ -4234,13 +4258,7 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "18:30" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:00" ;
-            ns1:dayOfWeek "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "11:30" ] ;
+            ns1:opens "18:30" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -4689,6 +4707,12 @@
     ns1:image <https://eramangasteiz.coopcycle.org/media/cache/restaurant_thumbnail/65/1f/651fda7a86416.jpg> ;
     ns1:name "Gure Poke" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "15:00" ;
+            ns1:dayOfWeek "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "12:50" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "15:30" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
@@ -4727,6 +4751,10 @@
     ns1:image <https://eramangasteiz.coopcycle.org/media/cache/restaurant_thumbnail/60/f0/60f0190b06b2b.jpg> ;
     ns1:name "Klaritxu" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:30" ;
+            ns1:dayOfWeek "Friday" ;
+            ns1:opens "09:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:00" ;
             ns1:dayOfWeek "Thursday",
                 "Tuesday",
@@ -4908,6 +4936,14 @@
     ns1:image <https://eramangasteiz.coopcycle.org/media/cache/restaurant_thumbnail/61/54/615447780e88d.jpg> ;
     ns1:name "Waska" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "23:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Sunday",
+                "Thursday",
+                "Wednesday" ;
+            ns1:opens "19:35" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:30" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
@@ -4915,15 +4951,7 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "12:45" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "23:00" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Sunday",
-                "Thursday",
-                "Wednesday" ;
-            ns1:opens "19:35" ] ;
+            ns1:opens "12:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -4959,7 +4987,12 @@
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Sunday" ;
-            ns1:opens "12:45" ] ;
+            ns1:opens "12:45" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "22:45" ;
+            ns1:dayOfWeek "Thursday",
+                "Wednesday" ;
+            ns1:opens "19:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -4975,14 +5008,9 @@
     ns1:image <https://eramangasteiz.coopcycle.org/media/cache/restaurant_thumbnail/61/49/61498d9c68555.jpg> ;
     ns1:name "Arkupe" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "15:31" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Sunday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "12:45" ],
+            ns1:closes "22:45" ;
+            ns1:dayOfWeek "Saturday" ;
+            ns1:opens "20:05" ],
         [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:45" ;
             ns1:dayOfWeek "Saturday" ;
@@ -5347,6 +5375,14 @@
     ns1:image <https://fast-and-curious.coopcycle.org/media/cache/restaurant_thumbnail/60/e2/60e25e491ace3.jpg> ;
     ns1:name "Le Punjab" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:45" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Sunday",
+                "Thursday",
+                "Tuesday" ;
+            ns1:opens "11:30" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:15" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -5354,15 +5390,7 @@
                 "Sunday",
                 "Thursday",
                 "Tuesday" ;
-            ns1:opens "18:30" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:45" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Sunday",
-                "Thursday",
-                "Tuesday" ;
-            ns1:opens "11:30" ] ;
+            ns1:opens "18:30" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -5452,16 +5480,6 @@
     ns1:image <https://fast-and-curious.coopcycle.org/media/cache/restaurant_thumbnail/61/47/61476d2cc8bcb.jpg> ;
     ns1:name "Bouchon Normand" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "22:45" ;
-            ns1:dayOfWeek "Friday",
-                "Monday",
-                "Saturday",
-                "Sunday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "18:45" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:15" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -5470,7 +5488,17 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "11:45" ] ;
+            ns1:opens "11:45" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "22:45" ;
+            ns1:dayOfWeek "Friday",
+                "Monday",
+                "Saturday",
+                "Sunday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "18:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -5747,7 +5775,7 @@
                     ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
                     ns1:inLanguage "fr" ;
                     ns1:urlTemplate "https://feelavelo.coopcycle.org/fr/restaurant/14-chez-tigre" ] ] ;
-    ns1:sameAs <file:///C:/Users/Saad%20Riffi%20Temsamani/Desktop/DSC/sem%20web/Projet/> .
+    ns1:sameAs <file:///D:/M2/Web%20semantic/Projet/WebSemantiqueProject/> .
 
 <https://feelavelo.coopcycle.org/fr/restaurant/4-code-oe> a ns1:Restaurant ;
     ns1:address <https://feelavelo.coopcycle.org/fr/shops/addresses/44> ;
@@ -6086,6 +6114,13 @@
     ns1:image <https://initiative-emploi.coopcycle.org/media/cache/restaurant_thumbnail/61/b9/61b9da898286d.jpg> ;
     ns1:name "Le Neuf de Thai" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:45" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:45" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "20:45" ;
             ns1:dayOfWeek "Tuesday",
                 "Wednesday" ;
@@ -6095,14 +6130,7 @@
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday" ;
-            ns1:opens "18:45" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:45" ;
-            ns1:dayOfWeek "Friday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "11:45" ] ;
+            ns1:opens "18:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
@@ -6443,6 +6471,10 @@
     ns1:name "Spatzlemacher" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:40" ;
+            ns1:dayOfWeek "Saturday" ;
+            ns1:opens "17:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:40" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
                 "Thursday",
@@ -6457,10 +6489,6 @@
                 "Tuesday",
                 "Wednesday" ;
             ns1:opens "12:00" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "21:40" ;
-            ns1:dayOfWeek "Saturday" ;
-            ns1:opens "17:00" ],
         [ a ns1:OpeningHoursSpecification ;
             ns1:closes "20:40" ;
             ns1:dayOfWeek "Sunday" ;
@@ -6539,24 +6567,24 @@
     ns1:image <https://khora.berlin/media/cache/restaurant_thumbnail/61/f0/61f0eb1300a8d.jpg> ;
     ns1:name "Akkawy" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:40" ;
+            ns1:closes "19:40" ;
             ns1:dayOfWeek "Friday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "12:00" ],
+            ns1:opens "17:00" ],
         [ a ns1:OpeningHoursSpecification ;
             ns1:closes "19:40" ;
             ns1:dayOfWeek "Saturday",
                 "Sunday" ;
             ns1:opens "17:00" ],
         [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "19:40" ;
+            ns1:closes "14:40" ;
             ns1:dayOfWeek "Friday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "17:00" ] ;
+            ns1:opens "12:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -6760,14 +6788,6 @@
     ns1:image <https://khora.berlin/media/cache/restaurant_thumbnail/60/2c/602c519b3cb9a.jpg> ;
     ns1:name "MARIA  vegan comfort food" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "21:40" ;
-            ns1:dayOfWeek "Friday",
-                "Monday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "17:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:40" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -6775,6 +6795,14 @@
                 "Tuesday",
                 "Wednesday" ;
             ns1:opens "12:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:40" ;
+            ns1:dayOfWeek "Friday",
+                "Monday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "17:00" ],
         [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:40" ;
             ns1:dayOfWeek "Saturday",
@@ -6985,21 +7013,21 @@
     ns1:image <https://kooglof.coopcycle.org/media/cache/restaurant_thumbnail/65/6e/656e17f652f6b.jpeg> ;
     ns1:name "Jabiru Cafe 🧆" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "21:30" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "18:45" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:00" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "11:45" ] ;
+            ns1:opens "11:45" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:30" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "18:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -7077,19 +7105,19 @@
     ns1:image <https://kooglof.coopcycle.org/media/cache/restaurant_thumbnail/65/6e/656e17eae498b.jpeg> ;
     ns1:name "Insieme Pizzeria 🍕" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:30" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Wednesday" ;
+            ns1:opens "12:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "20:45" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "18:45" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:30" ;
-            ns1:dayOfWeek "Friday",
-                "Thursday",
-                "Wednesday" ;
-            ns1:opens "12:00" ] ;
+            ns1:opens "18:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -7105,19 +7133,19 @@
     ns1:image <https://kooglof.coopcycle.org/media/cache/restaurant_thumbnail/63/71/6371ef4d84781.jpg> ;
     ns1:name "Thai Square 🍛" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "21:30" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Thursday" ;
-            ns1:opens "18:50" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:00" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "11:45" ] ;
+            ns1:opens "11:45" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:30" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Thursday" ;
+            ns1:opens "18:50" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -7330,13 +7358,13 @@
     ns1:image <https://kooglof.coopcycle.org/media/cache/restaurant_thumbnail/65/6e/656e168020d14.png> ;
     ns1:name "Donatien Maitre Eclair 🍰" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "15:00" ;
+            ns1:closes "20:00" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "10:01" ],
+            ns1:opens "17:01" ],
         [ a ns1:OpeningHoursSpecification ;
             ns1:closes "20:00" ;
             ns1:dayOfWeek "Friday",
@@ -7511,6 +7539,10 @@
             ns1:dayOfWeek "Sunday" ;
             ns1:opens "18:00" ],
         [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:45" ;
+            ns1:dayOfWeek "Sunday" ;
+            ns1:opens "18:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "13:45" ;
             ns1:dayOfWeek "Friday",
                 "Thursday",
@@ -7575,6 +7607,12 @@
     ns1:image <https://kooglof.coopcycle.org/media/cache/restaurant_thumbnail/65/6e/656e1572f325a.png> ;
     ns1:name "Nouveau ! 🔥 Pecora Negra 🍕" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:30" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Wednesday" ;
+            ns1:opens "12:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:30" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -7583,13 +7621,7 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "19:00" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:30" ;
-            ns1:dayOfWeek "Friday",
-                "Thursday",
-                "Wednesday" ;
-            ns1:opens "12:00" ] ;
+            ns1:opens "19:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -7858,15 +7890,15 @@
                 "Wednesday" ;
             ns1:opens "11:20" ],
         [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:30" ;
+            ns1:dayOfWeek "Sunday" ;
+            ns1:opens "11:50" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:00" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday" ;
-            ns1:opens "18:50" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:30" ;
-            ns1:dayOfWeek "Sunday" ;
-            ns1:opens "11:50" ] ;
+            ns1:opens "18:50" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -8184,15 +8216,6 @@
     ns1:image <https://krokoop.coopcycle.org/media/cache/restaurant_thumbnail/65/60/6560e6abd19cd.png> ;
     ns1:name "MAMIE LANGOS" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:00" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Sunday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "11:50" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:00" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
@@ -8200,7 +8223,16 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "18:50" ] ;
+            ns1:opens "18:50" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Sunday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:50" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -8246,14 +8278,6 @@
     ns1:image <https://krokoop.coopcycle.org/media/cache/restaurant_thumbnail/65/49/65498e4acb6c0.png> ;
     ns1:name "BIG BROTHERS" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:00" ;
-            ns1:dayOfWeek "Friday",
-                "Monday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "11:30" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:00" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -8261,7 +8285,15 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "18:50" ] ;
+            ns1:opens "18:50" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:00" ;
+            ns1:dayOfWeek "Friday",
+                "Monday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:30" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -8642,17 +8674,17 @@
         <https://lapajara.coopcycle.org/es/restaurant/42-coco-bar>,
         <https://lapajara.coopcycle.org/es/restaurant/45-pizzeria-emma-y-julia>,
         <https://lapajara.coopcycle.org/es/restaurant/49-b13-bar>,
-        <https://lapajara.coopcycle.org/es/restaurant/54-romero-verde>,
         <https://lapajara.coopcycle.org/es/restaurant/55-mandrake-greek-street-food>,
         <https://lapajara.coopcycle.org/es/restaurant/60-la-alpargata-taberna-vegana>,
         <https://lapajara.coopcycle.org/es/restaurant/61-viva-chapata>,
         <https://lapajara.coopcycle.org/es/restaurant/71-mad-mad-vegan-chueca>,
+        <https://lapajara.coopcycle.org/es/restaurant/73-el-fogon-verde>,
         <https://lapajara.coopcycle.org/es/restaurant/78-baco-y-beto-taberna>,
-        <https://lapajara.coopcycle.org/es/restaurant/79-pajaritos-mojados>,
         <https://lapajara.coopcycle.org/es/restaurant/81-poke-friendly-chamberi>,
         <https://lapajara.coopcycle.org/es/restaurant/88-la-dorrego>,
         <https://lapajara.coopcycle.org/es/restaurant/9-menomale>,
-        <https://lapajara.coopcycle.org/es/restaurant/92-poke-friendly-atocha> .
+        <https://lapajara.coopcycle.org/es/restaurant/92-poke-friendly-atocha>,
+        <https://lapajara.coopcycle.org/es/restaurant/94-la-alegria-de-la-huerta> .
 
 <https://lapajara.coopcycle.org/es/restaurant/11-la-oveja-negra> a ns1:Restaurant ;
     ns1:address <https://lapajara.coopcycle.org/es/shops/addresses/29> ;
@@ -8883,16 +8915,16 @@
     ns1:image <https://lapajara.coopcycle.org/media/cache/restaurant_thumbnail/62/7b/627b91cf1f966.jpg> ;
     ns1:name "Pizzi & Dixie" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "16:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "13:30" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "15:30" ;
             ns1:dayOfWeek "Monday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "13:30" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "16:00" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday" ;
             ns1:opens "13:30" ],
         [ a ns1:OpeningHoursSpecification ;
             ns1:closes "23:00" ;
@@ -8932,7 +8964,11 @@
             ns1:closes "23:00" ;
             ns1:dayOfWeek "Friday",
                 "Saturday" ;
-            ns1:opens "19:45" ] ;
+            ns1:opens "19:45" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "15:30" ;
+            ns1:dayOfWeek "Thursday" ;
+            ns1:opens "13:30" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
@@ -8971,7 +9007,12 @@
         [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:30" ;
             ns1:dayOfWeek "Sunday" ;
-            ns1:opens "20:30" ] ;
+            ns1:opens "20:30" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "15:30" ;
+            ns1:dayOfWeek "Thursday",
+                "Wednesday" ;
+            ns1:opens "13:30" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
@@ -9027,30 +9068,6 @@
                     ns1:urlTemplate "https://lapajara.coopcycle.org/es/restaurant/49-b13-bar" ] ] ;
     ns1:sameAs <https://www.facebook.com/B13-Bar-Restaurante-100-Vegetariano-170177469773516/> .
 
-<https://lapajara.coopcycle.org/es/restaurant/54-romero-verde> a ns1:Restaurant ;
-    ns1:address <https://lapajara.coopcycle.org/es/shops/addresses/6172> ;
-    ns1:description "100% mandanga vegana. Preparamos comida sana, equilibrada y con mucho sabor, y te la enviamos en envases biodegradables." ;
-    ns1:image <https://lapajara.coopcycle.org/media/cache/restaurant_thumbnail/64/3e/643e610349631.png> ;
-    ns1:name "Romero Verde" ;
-    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "22:30" ;
-            ns1:dayOfWeek "Friday" ;
-            ns1:opens "20:30" ] ;
-    ns1:potentialAction [ a ns1:OrderAction ;
-            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
-            ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
-                    ns1:appliesToDeliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
-                    ns1:eligibleTransactionVolume [ a ns1:PriceSpecification ;
-                            ns1:price "10.00" ;
-                            ns1:priceCurrency "EUR" ] ;
-                    ns1:price "3.50" ;
-                    ns1:priceCurrency "EUR" ] ;
-            ns1:target [ a ns1:EntryPoint ;
-                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
-                    ns1:inLanguage "es" ;
-                    ns1:urlTemplate "https://lapajara.coopcycle.org/es/restaurant/54-romero-verde" ] ] ;
-    ns1:sameAs <https://www.romeroverde.es/> .
-
 <https://lapajara.coopcycle.org/es/restaurant/55-mandrake-greek-street-food> a ns1:Restaurant ;
     ns1:address <https://lapajara.coopcycle.org/es/shops/addresses/6181> ;
     ns1:description "La mejor street food de Grecia en Madrid. Un concepto con preparaciones artesanales y el mejor sabor a parrilla." ;
@@ -9097,6 +9114,11 @@
     ns1:image <https://lapajara.coopcycle.org/media/cache/restaurant_thumbnail/63/41/6341e5e495d6a.JPG> ;
     ns1:name "La Alpargata - Taberna Vegana" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "16:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "13:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "15:30" ;
             ns1:dayOfWeek "Thursday",
                 "Tuesday",
@@ -9133,11 +9155,6 @@
     ns1:image <https://lapajara.coopcycle.org/media/cache/restaurant_thumbnail/63/3e/633eae5ce3250.png> ;
     ns1:name "Viva Chapata" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "16:00" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday" ;
-            ns1:opens "13:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "15:30" ;
             ns1:dayOfWeek "Thursday",
                 "Tuesday",
@@ -9148,6 +9165,11 @@
             ns1:dayOfWeek "Friday",
                 "Saturday" ;
             ns1:opens "19:45" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "16:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "13:00" ],
         [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:30" ;
             ns1:dayOfWeek "Sunday" ;
@@ -9208,6 +9230,35 @@
                     ns1:urlTemplate "https://lapajara.coopcycle.org/es/restaurant/71-mad-mad-vegan-chueca" ] ] ;
     ns1:sameAs <https://www.instagram.com/madmadvegan/> .
 
+<https://lapajara.coopcycle.org/es/restaurant/73-el-fogon-verde> a ns1:Restaurant ;
+    ns1:address <https://lapajara.coopcycle.org/es/shops/addresses/10555> ;
+    ns1:description "100% agroecologico, vegetariano y cooperativo.Nuestra cocina es 100% elaboracion propia, sin aditivos, ni productos procesados.Productos de temporada y de cercania. Opcion vegana y sin gluten." ;
+    ns1:image <https://lapajara.coopcycle.org/media/cache/restaurant_thumbnail/60/ef/60ef47db72a05.jpg> ;
+    ns1:name "El fogon verde" ;
+    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "15:30" ;
+            ns1:dayOfWeek "Friday",
+                "Monday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "13:00" ] ;
+    ns1:potentialAction [ a ns1:OrderAction ;
+            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
+            ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
+                    ns1:appliesToDeliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
+                    ns1:eligibleTransactionVolume [ a ns1:PriceSpecification ;
+                            ns1:price "10.00" ;
+                            ns1:priceCurrency "EUR" ] ;
+                    ns1:price "3.50" ;
+                    ns1:priceCurrency "EUR" ] ;
+            ns1:target [ a ns1:EntryPoint ;
+                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
+                    ns1:inLanguage "es" ;
+                    ns1:urlTemplate "https://lapajara.coopcycle.org/es/restaurant/73-el-fogon-verde" ] ] ;
+    ns1:sameAs <https://elfogonverde.net/> .
+
 <https://lapajara.coopcycle.org/es/restaurant/78-baco-y-beto-taberna> a ns1:Restaurant ;
     ns1:address <https://lapajara.coopcycle.org/es/shops/addresses/13153> ;
     ns1:description "Beto es cercano. Cocina como tu madre. Cocina mediterranea e internacional, con sabores de los lindes del Caribe." ;
@@ -9232,35 +9283,6 @@
                     ns1:inLanguage "es" ;
                     ns1:urlTemplate "https://lapajara.coopcycle.org/es/restaurant/78-baco-y-beto-taberna" ] ] ;
     ns1:sameAs <http://baco-beto.com/> .
-
-<https://lapajara.coopcycle.org/es/restaurant/79-pajaritos-mojados> a ns1:Restaurant ;
-    ns1:address <https://lapajara.coopcycle.org/es/shops/addresses/13850> ;
-    ns1:description "Riquisimos entrepanes, opciones para veganos, vegetarianos y celiacos, con productos frescos y de calidad. Cosas que nos gustan principalmente a nosotros y por lo visto tambien a vosotros." ;
-    ns1:image <https://lapajara.coopcycle.org/media/cache/restaurant_thumbnail/60/19/60190536d3c81.JPG> ;
-    ns1:name "Pajaritos Mojados" ;
-    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "23:00" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday" ;
-            ns1:opens "19:45" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "22:30" ;
-            ns1:dayOfWeek "Sunday" ;
-            ns1:opens "19:45" ] ;
-    ns1:potentialAction [ a ns1:OrderAction ;
-            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
-            ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
-                    ns1:appliesToDeliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
-                    ns1:eligibleTransactionVolume [ a ns1:PriceSpecification ;
-                            ns1:price "10.00" ;
-                            ns1:priceCurrency "EUR" ] ;
-                    ns1:price "3.50" ;
-                    ns1:priceCurrency "EUR" ] ;
-            ns1:target [ a ns1:EntryPoint ;
-                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
-                    ns1:inLanguage "es" ;
-                    ns1:urlTemplate "https://lapajara.coopcycle.org/es/restaurant/79-pajaritos-mojados" ] ] ;
-    ns1:sameAs <https://pajaritosmojados.eatbu.com/?lang=es> .
 
 <https://lapajara.coopcycle.org/es/restaurant/81-poke-friendly-chamberi> a ns1:Restaurant ;
     ns1:address <https://lapajara.coopcycle.org/es/shops/addresses/14980> ;
@@ -9305,6 +9327,11 @@
     ns1:image <https://lapajara.coopcycle.org/media/cache/restaurant_thumbnail/60/48/604899c58c32e.webp> ;
     ns1:name "La Dorrego" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "16:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "13:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "16:00" ;
             ns1:dayOfWeek "Friday",
                 "Saturday" ;
@@ -9419,6 +9446,45 @@
                     ns1:urlTemplate "https://lapajara.coopcycle.org/es/restaurant/92-poke-friendly-atocha" ] ] ;
     ns1:sameAs <https://www.pokefriendly.com/> .
 
+<https://lapajara.coopcycle.org/es/restaurant/94-la-alegria-de-la-huerta> a ns1:Restaurant ;
+    ns1:address <https://lapajara.coopcycle.org/es/shops/addresses/21863> ;
+    ns1:description "Casa de comidas para llevar en pleno Rastro madrileno con la mayor parte de sus platos vegetarianos y veganos.  ?Lo mejor de todo? Te lo pueden llevar a casa con RESIDUO ZERO gracias a los envases de 'Bumerang' y los cubiertos comestibles de 'Voila Bio'.  Simplemente date de alta en la app de Bumerang y copia tu codigo personal en las notas de La Pajara junto al mensaje 'Quiero mi pedido con Bumerang'.  Ah!! ?Que necesitas un catering? Ponte en contacto con nosotras y comentanos que necesitas.  La Pajara se encargara de que llegue a tus manos felizmente" ;
+    ns1:image <https://lapajara.coopcycle.org/media/cache/restaurant_thumbnail/63/97/6397c147aaffb.jpg> ;
+    ns1:name "La Alegria de la Huerta" ;
+    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "16:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "13:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "15:30" ;
+            ns1:dayOfWeek "Monday",
+                "Thursday",
+                "Tuesday" ;
+            ns1:opens "13:00" ] ;
+    ns1:potentialAction [ a ns1:OrderAction ;
+            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
+            ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
+                    ns1:appliesToDeliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
+                    ns1:eligibleTransactionVolume [ a ns1:PriceSpecification ;
+                            ns1:price "10.00" ;
+                            ns1:priceCurrency "EUR" ] ;
+                    ns1:price "3.50" ;
+                    ns1:priceCurrency "EUR" ] ;
+            ns1:target [ a ns1:EntryPoint ;
+                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
+                    ns1:inLanguage "es" ;
+                    ns1:urlTemplate "https://lapajara.coopcycle.org/es/restaurant/94-la-alegria-de-la-huerta" ] ] ;
+    ns1:sameAs <https://instagram.com/laalegriadelahuerta.mad> .
+
+<https://lapajara.coopcycle.org/es/shops/addresses/10555> a ns1:PostalAddress ;
+    ns1:geo [ a ns1:GeoCoordinates ;
+            ns1:latitude 4.041233e+01 ;
+            ns1:longitude -3.694076e+00 ] ;
+    ns1:name "El fogon verde" ;
+    ns1:streetAddress "Calle de la Alameda, 4, 28014 Madrid, Espana" ;
+    ns1:telephone "+34911997938" .
+
 <https://lapajara.coopcycle.org/es/shops/addresses/13153> a ns1:PostalAddress ;
     ns1:geo [ a ns1:GeoCoordinates ;
             ns1:latitude 4.042272e+01 ;
@@ -9426,14 +9492,6 @@
     ns1:name "Baco y Beto - Taberna" ;
     ns1:streetAddress "Calle de Pelayo 24, Madrid, Espana" ;
     ns1:telephone "+34915228441" .
-
-<https://lapajara.coopcycle.org/es/shops/addresses/13850> a ns1:PostalAddress ;
-    ns1:geo [ a ns1:GeoCoordinates ;
-            ns1:latitude 4.041049e+01 ;
-            ns1:longitude -3.710277e+00 ] ;
-    ns1:name "Pajaritos Mojados" ;
-    ns1:streetAddress "Calle Humilladero 3, Madrid, Espana" ;
-    ns1:telephone "+34912218889" .
 
 <https://lapajara.coopcycle.org/es/shops/addresses/14> a ns1:PostalAddress ;
     ns1:geo [ a ns1:GeoCoordinates ;
@@ -9482,6 +9540,14 @@
     ns1:name "Poke Friendly Atocha" ;
     ns1:streetAddress "Paseo de Santa Maria de la Cabeza, 41, 28045 Madrid, Espana" ;
     ns1:telephone "+34912851287" .
+
+<https://lapajara.coopcycle.org/es/shops/addresses/21863> a ns1:PostalAddress ;
+    ns1:geo [ a ns1:GeoCoordinates ;
+            ns1:latitude 4.041033e+01 ;
+            ns1:longitude -3.706162e+00 ] ;
+    ns1:name "La Alegria de la Huerta" ;
+    ns1:streetAddress "Calle de las Dos Hermanas, 22, 28012 Madrid, Espana" ;
+    ns1:telephone "+34608410592" .
 
 <https://lapajara.coopcycle.org/es/shops/addresses/2198> a ns1:PostalAddress ;
     ns1:geo [ a ns1:GeoCoordinates ;
@@ -9538,14 +9604,6 @@
     ns1:name "B13 Bar" ;
     ns1:streetAddress "Calle de la Ballesta, 13, Madrid, Espana" ;
     ns1:telephone "+34911704435" .
-
-<https://lapajara.coopcycle.org/es/shops/addresses/6172> a ns1:PostalAddress ;
-    ns1:geo [ a ns1:GeoCoordinates ;
-            ns1:latitude 4.04324e+01 ;
-            ns1:longitude -3.703123e+00 ] ;
-    ns1:name "Romero Verde" ;
-    ns1:streetAddress "Calle de Gonzalo de Cordoba, 5, Madrid, Espana" ;
-    ns1:telephone "+34623188141" .
 
 <https://lapajara.coopcycle.org/es/shops/addresses/6181> a ns1:PostalAddress ;
     ns1:geo [ a ns1:GeoCoordinates ;
@@ -10052,14 +10110,6 @@
     ns1:image <https://lcr.coopcycle.org/media/cache/restaurant_thumbnail/64/e5/64e5cb530613c.jpg> ;
     ns1:name "Curry Bowl" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:45" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Sunday",
-                "Thursday",
-                "Wednesday" ;
-            ns1:opens "11:45" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:50" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
@@ -10067,7 +10117,15 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "18:50" ] ;
+            ns1:opens "18:50" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:45" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Sunday",
+                "Thursday",
+                "Wednesday" ;
+            ns1:opens "11:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -10171,15 +10229,6 @@
     ns1:image <https://lcr.coopcycle.org/media/cache/restaurant_thumbnail/61/a0/61a033a7341d7.jpg> ;
     ns1:name "Chawp Shop Big" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:55" ;
-            ns1:dayOfWeek "Friday",
-                "Monday",
-                "Saturday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "11:55" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:40" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -10187,7 +10236,16 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "19:00" ] ;
+            ns1:opens "19:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:55" ;
+            ns1:dayOfWeek "Friday",
+                "Monday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:55" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -10212,6 +10270,11 @@
                 "Wednesday" ;
             ns1:opens "12:00" ],
         [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:50" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "19:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:40" ;
             ns1:dayOfWeek "Monday",
                 "Thursday",
@@ -10230,14 +10293,6 @@
                     ns1:inLanguage "fr" ;
                     ns1:urlTemplate "https://lcr.coopcycle.org/fr/restaurant/9-le-coucou-rennais" ] ] ;
     ns1:sameAs <https://coucourennais.fr/> .
-
-<https://lcr.coopcycle.org/fr/shops/addresses/1024> a ns1:PostalAddress ;
-    ns1:geo [ a ns1:GeoCoordinates ;
-            ns1:latitude 4.810896e+01 ;
-            ns1:longitude -1.665867e+00 ] ;
-    ns1:name "Yam Yam 얌얌" ;
-    ns1:streetAddress "14 Boulevard Rene Laennec, 35000 Rennes, France" ;
-    ns1:telephone "+33299384861" .
 
 <https://lcr.coopcycle.org/fr/shops/addresses/10686> a ns1:PostalAddress ;
     ns1:geo [ a ns1:GeoCoordinates ;
@@ -10407,13 +10462,13 @@
     ns1:image <https://le-rayon-vert.coopcycle.org/media/cache/restaurant_thumbnail/61/70/6170314b7fb5c.jpg> ;
     ns1:name "De Sel et d'Ardoise" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "12:00" ;
-            ns1:dayOfWeek "Saturday" ;
-            ns1:opens "10:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "17:00" ;
             ns1:dayOfWeek "Friday" ;
-            ns1:opens "13:00" ] ;
+            ns1:opens "13:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "12:00" ;
+            ns1:dayOfWeek "Saturday" ;
+            ns1:opens "10:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
@@ -10588,16 +10643,16 @@
     ns1:image <https://lescoursiersbrestois.coopcycle.org/media/cache/restaurant_thumbnail/61/f5/61f572a518f17.jpg> ;
     ns1:name "AU P'TY LYONNAIS" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:30" ;
+            ns1:dayOfWeek "Thursday",
+                "Wednesday" ;
+            ns1:opens "11:15" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:00" ;
             ns1:dayOfWeek "Friday",
                 "Thursday",
                 "Wednesday" ;
-            ns1:opens "18:15" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:30" ;
-            ns1:dayOfWeek "Thursday",
-                "Wednesday" ;
-            ns1:opens "11:15" ] ;
+            ns1:opens "18:15" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -10612,20 +10667,20 @@
     ns1:image <https://lescoursiersbrestois.coopcycle.org/media/cache/restaurant_thumbnail/62/28/6228b72209a93.jpg> ;
     ns1:name "LE BIOREK BRESTOIS" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:30" ;
-            ns1:dayOfWeek "Friday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "11:15" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:30" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "18:45" ] ;
+            ns1:opens "18:45" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:30" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:15" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -10640,20 +10695,20 @@
     ns1:image <https://lescoursiersbrestois.coopcycle.org/media/cache/restaurant_thumbnail/62/5e/625ee09b0d168.jpg> ;
     ns1:name "SIGNARE" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:30" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:15" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:30" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "18:15" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:30" ;
-            ns1:dayOfWeek "Friday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "11:15" ] ;
+            ns1:opens "18:15" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -10812,6 +10867,13 @@
     ns1:image <https://lescoursiersbrestois.coopcycle.org/media/cache/restaurant_thumbnail/65/44/6544baab57465.png> ;
     ns1:name "Bori Bori" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:30" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:30" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:30" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
@@ -10870,20 +10932,20 @@
     ns1:image <https://lescoursiersbrestois.coopcycle.org/media/cache/restaurant_thumbnail/65/4b/654b3f11eb428.webp> ;
     ns1:name "Kous" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "13:30" ;
-            ns1:dayOfWeek "Friday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "12:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:30" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "19:00" ] ;
+            ns1:opens "19:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:30" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "12:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -11316,16 +11378,16 @@
     ns1:image <https://mensakas.coopcycle.org/media/cache/restaurant_thumbnail/60/77/60775693b3d7c.jpg> ;
     ns1:name "Mucho Cielo y Mucho Mar" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "23:00" ;
+            ns1:dayOfWeek "Friday" ;
+            ns1:opens "20:45" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "15:15" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday",
                 "Wednesday" ;
-            ns1:opens "13:45" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "23:00" ;
-            ns1:dayOfWeek "Friday" ;
-            ns1:opens "20:45" ] ;
+            ns1:opens "13:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
@@ -11615,6 +11677,11 @@
                 "Wednesday" ;
             ns1:opens "11:55" ],
         [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "11:55" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:45" ;
             ns1:dayOfWeek "Thursday" ;
             ns1:opens "19:00" ],
@@ -11628,12 +11695,6 @@
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Sunday" ;
-            ns1:opens "19:00" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "21:30" ;
-            ns1:dayOfWeek "Monday",
-                "Tuesday",
-                "Wednesday" ;
             ns1:opens "19:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
@@ -11650,6 +11711,11 @@
     ns1:image <https://naofood.coopcycle.org/media/cache/restaurant_thumbnail/65/4b/654b851e875f5.jpg> ;
     ns1:name "Yafel" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "22:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "18:30" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:00" ;
             ns1:dayOfWeek "Friday",
                 "Saturday" ;
@@ -11686,18 +11752,18 @@
     ns1:image <https://naofood.coopcycle.org/media/cache/restaurant_thumbnail/5f/c9/5fc936ddbab98.PNG> ;
     ns1:name "M. Strogoff" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:00" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday" ;
-            ns1:opens "12:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:45" ;
             ns1:dayOfWeek "Friday",
                 "Sunday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "19:00" ] ;
+            ns1:opens "19:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday" ;
+            ns1:opens "12:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -11833,6 +11899,37 @@
                     ns1:urlTemplate "https://naofood.coopcycle.org/fr/restaurant/69-paws-hot-dog" ] ] ;
     ns1:sameAs <https://www.facebook.com/PawsHotDog/> .
 
+<https://naofood.coopcycle.org/fr/restaurant/69-paws-hot-dog> a ns1:Restaurant ;
+    ns1:address <https://naofood.coopcycle.org/fr/shops/addresses/45851> ;
+    ns1:bannerImage "https://naofood.coopcycle.org/media/cache/restaurant_banner/61/68/61684651ddfc3.jpg" ;
+    ns1:description "Depuis 2017, PAWS regale les Nantais.e.s, la carte de PAWS est entierement fait maison, avec le maximum de produits bio, locaux et source avec soin, jusqu'au pain des hot dog confectionnes quotidiennement sur place.Vous pouvez commander notre carte de hot dog avec le choix de differentes saucisses artisanales.Saucisse de francfort, saucisse au muscadet, saucisse chipouillette (moitie chipolatas-andouillette), saucisse vegetarienne bio.Vous pouvez si vous le souhaite choisir votre hot dog en version vegane.Nous vous proposons egalement de commander une belle selection  de tapas fait maison.Pour accompagner votre repas, vous trouverez une large gamme de boissons avec et sans alcool, vins natures, biere local aerofab, ou encore ginger beer ou kombucha en plus des softs classique.Bon appetit" ;
+    ns1:image <https://naofood.coopcycle.org/media/cache/restaurant_thumbnail/61/68/61684651ddfc3.jpg> ;
+    ns1:name "PAWS HOT DOG" ;
+    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:45" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Thursday" ;
+            ns1:opens "19:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:45" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "12:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:45" ;
+            ns1:dayOfWeek "Saturday" ;
+            ns1:opens "12:00" ] ;
+    ns1:potentialAction [ a ns1:OrderAction ;
+            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
+            ns1:target [ a ns1:EntryPoint ;
+                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
+                    ns1:inLanguage "fr" ;
+                    ns1:urlTemplate "https://naofood.coopcycle.org/fr/restaurant/69-paws-hot-dog" ] ] ;
+    ns1:sameAs <https://www.facebook.com/PawsHotDog/> .
+
 <https://naofood.coopcycle.org/fr/restaurant/73-bao-dao-taiwan-food> a ns1:Restaurant ;
     ns1:address <https://naofood.coopcycle.org/fr/shops/addresses/51192> ;
     ns1:bannerImage "https://naofood.coopcycle.org/media/cache/restaurant_banner/61/ba/61ba039e58a27.jpg" ;
@@ -11840,6 +11937,13 @@
     ns1:image <https://naofood.coopcycle.org/media/cache/restaurant_thumbnail/61/ba/61ba039e58a27.jpg> ;
     ns1:name "BAO DAO Taiwan Food" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:45" ;
+            ns1:dayOfWeek "Monday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:55" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:45" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -12027,6 +12131,10 @@
             ns1:closes "22:00" ;
             ns1:dayOfWeek "Friday",
                 "Saturday" ;
+            ns1:opens "18:55" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:15" ;
+            ns1:dayOfWeek "Sunday" ;
             ns1:opens "18:55" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
@@ -12351,14 +12459,6 @@
     ns1:image <https://niort.coopcycle.org/media/cache/restaurant_thumbnail/60/da/60da0f6a5cede.jpg> ;
     ns1:name "Le Gou Pei" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "21:00" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "19:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:15" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -12366,7 +12466,15 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "12:15" ] ;
+            ns1:opens "12:15" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "19:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -12413,6 +12521,12 @@
     ns1:image <https://niort.coopcycle.org/media/cache/restaurant_thumbnail/61/a4/61a487b831f1c.jpg> ;
     ns1:name "Hypsoline Kitchen" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "22:00" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Thursday" ;
+            ns1:opens "19:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:00" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -12420,13 +12534,7 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "11:45" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "22:00" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Thursday" ;
-            ns1:opens "19:00" ] ;
+            ns1:opens "11:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -12440,21 +12548,21 @@
     ns1:image <https://niort.coopcycle.org/media/cache/restaurant_thumbnail/61/4d/614d4e40673a2.jpg> ;
     ns1:name "Les Petites Bretonnes" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:15" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "11:45" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:00" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "19:00" ] ;
+            ns1:opens "19:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:15" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -12627,6 +12735,12 @@
     ns1:image <https://niort.coopcycle.org/media/cache/restaurant_thumbnail/65/4b/654bc4698e62b.jpg> ;
     ns1:name "Bombino - Pizzas napolitaines" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:30" ;
+            ns1:dayOfWeek "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "19:20" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:15" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -12635,12 +12749,6 @@
                 "Tuesday",
                 "Wednesday" ;
             ns1:opens "12:20" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "21:30" ;
-            ns1:dayOfWeek "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "19:20" ],
         [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:00" ;
             ns1:dayOfWeek "Friday",
@@ -12934,6 +13042,13 @@
     ns1:image <https://robinfood.coopcycle.org/media/cache/restaurant_thumbnail/62/9f/629f8ce48f3d8.jpeg> ;
     ns1:name "Amo Bento | Novoli" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:00" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:50" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:00" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -12942,14 +13057,7 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "18:50" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:00" ;
-            ns1:dayOfWeek "Friday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "11:50" ] ;
+            ns1:opens "18:50" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -13159,20 +13267,20 @@
     ns1:image <https://robinfood.coopcycle.org/media/cache/restaurant_thumbnail/64/2b/642b21b38363e.jpeg> ;
     ns1:name "Tripperia Vegana | TAN8" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:00" ;
-            ns1:dayOfWeek "Friday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "12:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:30" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "19:00" ] ;
+            ns1:opens "19:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:00" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "12:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -13265,13 +13373,6 @@
     ns1:image <https://robinfood.coopcycle.org/media/cache/restaurant_thumbnail/64/4c/644cd64f8568a.jpeg> ;
     ns1:name "Crispy Chicken" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:00" ;
-            ns1:dayOfWeek "Friday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "11:50" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:00" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -13280,7 +13381,14 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "18:50" ] ;
+            ns1:opens "18:50" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:00" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:50" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -13293,36 +13401,6 @@
     ns1:description "**_Rosticceria indiana. Il gusto che non dimenticherai._**" ;
     ns1:image <https://robinfood.coopcycle.org/media/cache/restaurant_thumbnail/64/11/641197b92b46c.jpeg> ;
     ns1:name "Al Noor" ;
-    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:00" ;
-            ns1:dayOfWeek "Friday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "11:50" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "22:00" ;
-            ns1:dayOfWeek "Friday",
-                "Monday",
-                "Saturday",
-                "Sunday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "18:50" ] ;
-    ns1:potentialAction [ a ns1:OrderAction ;
-            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
-            ns1:target [ a ns1:EntryPoint ;
-                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
-                    ns1:inLanguage "it" ;
-                    ns1:urlTemplate "https://robinfood.coopcycle.org/it/restaurant/43-al-noor" ] ] ;
-    ns1:sameAs <https://alnoorristoranteindiano.com/> .
-
-<https://robinfood.coopcycle.org/it/restaurant/44-haidy-pizza-kebab> a ns1:Restaurant ;
-    ns1:address <https://robinfood.coopcycle.org/it/shops/addresses/5600> ;
-    ns1:description "**_Kebab e tanto altro. Scopri Haidy Pizza Kebab di Firenze e il suo intrigante menu colmo di piatti per tutti i gusti._**" ;
-    ns1:image <https://robinfood.coopcycle.org/media/cache/restaurant_thumbnail/64/13/64132da4bc0ad.jfif> ;
-    ns1:name "Haidy Pizza Kebab" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:00" ;
             ns1:dayOfWeek "Friday",
@@ -13340,6 +13418,36 @@
                 "Tuesday",
                 "Wednesday" ;
             ns1:opens "11:50" ] ;
+    ns1:potentialAction [ a ns1:OrderAction ;
+            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
+            ns1:target [ a ns1:EntryPoint ;
+                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
+                    ns1:inLanguage "it" ;
+                    ns1:urlTemplate "https://robinfood.coopcycle.org/it/restaurant/43-al-noor" ] ] ;
+    ns1:sameAs <https://alnoorristoranteindiano.com/> .
+
+<https://robinfood.coopcycle.org/it/restaurant/44-haidy-pizza-kebab> a ns1:Restaurant ;
+    ns1:address <https://robinfood.coopcycle.org/it/shops/addresses/5600> ;
+    ns1:description "**_Kebab e tanto altro. Scopri Haidy Pizza Kebab di Firenze e il suo intrigante menu colmo di piatti per tutti i gusti._**" ;
+    ns1:image <https://robinfood.coopcycle.org/media/cache/restaurant_thumbnail/64/13/64132da4bc0ad.jfif> ;
+    ns1:name "Haidy Pizza Kebab" ;
+    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:00" ;
+            ns1:dayOfWeek "Friday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:50" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "22:00" ;
+            ns1:dayOfWeek "Friday",
+                "Monday",
+                "Saturday",
+                "Sunday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "18:50" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -13685,6 +13793,7 @@
     ns1:telephone "+33148767045" .
 
 <https://sicklo.coopcycle.org> ns2:CanDeliverFoodOf <https://sicklo.coopcycle.org/fr/restaurant/1-l-apericerie>,
+        <https://sicklo.coopcycle.org/fr/restaurant/103-ty-chaud>,
         <https://sicklo.coopcycle.org/fr/restaurant/110-promo-tacos-lebrizfaim>,
         <https://sicklo.coopcycle.org/fr/restaurant/117-tea-and-bubbles>,
         <https://sicklo.coopcycle.org/fr/restaurant/12-escale-indienne>,
@@ -13734,6 +13843,28 @@
                     ns1:urlTemplate "https://sicklo.coopcycle.org/fr/restaurant/1-l-apericerie" ] ] ;
     ns1:sameAs <https://apericerie.fr/> .
 
+<https://sicklo.coopcycle.org/fr/restaurant/103-ty-chaud> a ns1:Restaurant ;
+    ns1:address <https://sicklo.coopcycle.org/fr/shops/addresses/43295> ;
+    ns1:bannerImage "https://sicklo.coopcycle.org/media/cache/restaurant_banner/65/6d/656da732b886b.jpg" ;
+    ns1:description "Cuisine maison franco japonaise familiale 🍴🥢" ;
+    ns1:image <https://sicklo.coopcycle.org/media/cache/restaurant_thumbnail/64/fe/64fede6a3ae02.jpg> ;
+    ns1:name "Ty Chaud 🥢" ;
+    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:30" ;
+            ns1:dayOfWeek "Friday",
+                "Monday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:30" ] ;
+    ns1:potentialAction [ a ns1:OrderAction ;
+            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
+            ns1:target [ a ns1:EntryPoint ;
+                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
+                    ns1:inLanguage "fr" ;
+                    ns1:urlTemplate "https://sicklo.coopcycle.org/fr/restaurant/103-ty-chaud" ] ] ;
+    ns1:sameAs <http://tychaud.fr> .
+
 <https://sicklo.coopcycle.org/fr/restaurant/110-promo-tacos-lebrizfaim> a ns1:Restaurant ;
     ns1:address <https://sicklo.coopcycle.org/fr/shops/addresses/45446> ;
     ns1:bannerImage "https://sicklo.coopcycle.org/media/cache/restaurant_banner/65/6d/656daee7a61a3.jpg" ;
@@ -13741,6 +13872,15 @@
     ns1:image <https://sicklo.coopcycle.org/media/cache/restaurant_thumbnail/62/28/6228a1db87c2b.jpg> ;
     ns1:name "Promo ! 🔥 Tacos LeBrizFaim 🌯" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:30" ;
+            ns1:dayOfWeek "Friday",
+                "Monday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:00" ],
+        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "21:45" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -13748,11 +13888,24 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "18:45" ],
-        [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:30" ;
+            ns1:opens "18:45" ] ;
+    ns1:potentialAction [ a ns1:OrderAction ;
+            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
+            ns1:target [ a ns1:EntryPoint ;
+                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
+                    ns1:inLanguage "fr" ;
+                    ns1:urlTemplate "https://sicklo.coopcycle.org/fr/restaurant/110-promo-tacos-lebrizfaim" ] ] ;
+    ns1:sameAs <https://tacos-lebrizfaim.eatbu.com/?lang=fr> .
+
+<https://sicklo.coopcycle.org/fr/restaurant/117-tea-and-bubbles> a ns1:Restaurant ;
+    ns1:address <https://sicklo.coopcycle.org/fr/shops/addresses/50452> ;
+    ns1:bannerImage "https://sicklo.coopcycle.org/media/cache/restaurant_banner/65/6d/656dae0104e91.jpg" ;
+    ns1:description "Vente de Bubble-TeaLe Bubble-Tea est une boisson taiwanaise ou chinoise (ca depend si vous preferez les taiwanais aux chinois ou vice versa) a base de the avec des perles de tapioca et/ou des perles de sirop. En fonction des thes, nous vous proposons de les melanger avec du lait ou du lait de coco avec ou sans aromes ou avec du sirop de fruits. Les bubble-tea seront livres froids uniquement.Bon Bubble-tea, Bonne Journee :)" ;
+    ns1:image <https://sicklo.coopcycle.org/media/cache/restaurant_thumbnail/62/8c/628cea054ee3c.jpg> ;
+    ns1:name "Tea and Bubbles 🧉" ;
+    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:40" ;
             ns1:dayOfWeek "Friday",
-                "Monday",
                 "Saturday",
                 "Thursday",
                 "Tuesday",
@@ -13763,8 +13916,40 @@
             ns1:target [ a ns1:EntryPoint ;
                     ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
                     ns1:inLanguage "fr" ;
-                    ns1:urlTemplate "https://sicklo.coopcycle.org/fr/restaurant/110-promo-tacos-lebrizfaim" ] ] ;
-    ns1:sameAs <https://tacos-lebrizfaim.eatbu.com/?lang=fr> .
+                    ns1:urlTemplate "https://sicklo.coopcycle.org/fr/restaurant/117-tea-and-bubbles" ] ] ;
+    ns1:sameAs <http://www.TandB.fr> .
+
+<https://sicklo.coopcycle.org/fr/restaurant/12-escale-indienne> a ns1:Restaurant ;
+    ns1:address <https://sicklo.coopcycle.org/fr/shops/addresses/221> ;
+    ns1:bannerImage "https://sicklo.coopcycle.org/media/cache/restaurant_banner/65/6d/656dc35f7f647.png" ;
+    ns1:description "Chez nous nul n'est exclu, il y en a pour tous les gouts et tous les regimes.Pour le plus grand plaisir des palais sensibles, nos plats sont savoureusement epices a point et non pimentes (sauf sur demande)" ;
+    ns1:image <https://sicklo.coopcycle.org/media/cache/restaurant_thumbnail/64/10/64107123cc989.jpg> ;
+    ns1:name "Escale Indienne 🛕" ;
+    ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:45" ;
+            ns1:dayOfWeek "Friday",
+                "Monday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "18:45" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "13:15" ;
+            ns1:dayOfWeek "Friday",
+                "Monday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "11:30" ] ;
+    ns1:potentialAction [ a ns1:OrderAction ;
+            ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
+            ns1:target [ a ns1:EntryPoint ;
+                    ns1:actionPlatform "http://schema.org/DesktopWebPlatform" ;
+                    ns1:inLanguage "fr" ;
+                    ns1:urlTemplate "https://sicklo.coopcycle.org/fr/restaurant/12-escale-indienne" ] ] ;
+    ns1:sameAs <http://www.lescaleindienne.fr/> .
 
 <https://sicklo.coopcycle.org/fr/restaurant/117-tea-and-bubbles> a ns1:Restaurant ;
     ns1:address <https://sicklo.coopcycle.org/fr/shops/addresses/50452> ;
@@ -14002,15 +14187,6 @@
     ns1:image <https://sicklo.coopcycle.org/media/cache/restaurant_thumbnail/65/97/6597c9fe06f5a.jpg> ;
     ns1:name "Nouveaute ! Poutine QUEBEC - (crispy)" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "21:50" ;
-            ns1:dayOfWeek "Friday",
-                "Monday",
-                "Saturday",
-                "Thursday",
-                "Tuesday",
-                "Wednesday" ;
-            ns1:opens "18:45" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "14:45" ;
             ns1:dayOfWeek "Friday",
                 "Monday",
@@ -14018,7 +14194,16 @@
                 "Thursday",
                 "Tuesday",
                 "Wednesday" ;
-            ns1:opens "11:00" ] ;
+            ns1:opens "11:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "21:50" ;
+            ns1:dayOfWeek "Friday",
+                "Monday",
+                "Saturday",
+                "Thursday",
+                "Tuesday",
+                "Wednesday" ;
+            ns1:opens "18:45" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -14589,15 +14774,15 @@
     ns1:image <https://zampate.coopcycle.org/media/cache/restaurant_thumbnail/60/d1/60d1883613aa8.jpeg> ;
     ns1:name "Barrio Sur" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "22:30" ;
-            ns1:dayOfWeek "Sunday",
-                "Wednesday" ;
-            ns1:opens "20:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "23:00" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday" ;
+            ns1:opens "20:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "22:30" ;
+            ns1:dayOfWeek "Sunday",
+                "Wednesday" ;
             ns1:opens "20:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
@@ -14620,15 +14805,15 @@
     ns1:image <https://zampate.coopcycle.org/media/cache/restaurant_thumbnail/60/d4/60d446ca8e96b.jpg> ;
     ns1:name "Asador Mari Carmen" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "15:30" ;
-            ns1:dayOfWeek "Saturday",
-                "Sunday" ;
-            ns1:opens "13:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "15:00" ;
             ns1:dayOfWeek "Friday",
                 "Thursday" ;
-            ns1:opens "12:45" ] ;
+            ns1:opens "12:45" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "15:30" ;
+            ns1:dayOfWeek "Saturday",
+                "Sunday" ;
+            ns1:opens "13:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:priceSpecification [ a ns1:DeliveryChargeSpecification ;
@@ -14681,15 +14866,15 @@
     ns1:image <https://zampate.coopcycle.org/media/cache/restaurant_thumbnail/63/b8/63b87b545c929.jpg> ;
     ns1:name "PIZZA  NEGRA" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "22:30" ;
-            ns1:dayOfWeek "Sunday",
-                "Wednesday" ;
-            ns1:opens "20:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "23:00" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday" ;
+            ns1:opens "20:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "22:30" ;
+            ns1:dayOfWeek "Sunday",
+                "Wednesday" ;
             ns1:opens "20:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
@@ -14783,14 +14968,14 @@
     ns1:image <https://zampate.coopcycle.org/media/cache/restaurant_thumbnail/63/b8/63b87fd58d268.jpg> ;
     ns1:name "Malteadora" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "22:30" ;
-            ns1:dayOfWeek "Wednesday" ;
-            ns1:opens "20:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:45" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday" ;
+            ns1:opens "20:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "22:30" ;
+            ns1:dayOfWeek "Wednesday" ;
             ns1:opens "20:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
@@ -15020,19 +15205,19 @@
     ns1:image <https://ziclop.coopcycle.org/media/cache/restaurant_thumbnail/61/f0/61f024cc2a2c6.jpeg> ;
     ns1:name "Luna de Estambul" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "22:30" ;
-            ns1:dayOfWeek "Friday",
-                "Saturday",
-                "Sunday",
-                "Thursday" ;
-            ns1:opens "19:30" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "15:35" ;
             ns1:dayOfWeek "Saturday",
                 "Sunday",
                 "Thursday",
                 "Wednesday" ;
-            ns1:opens "13:00" ] ;
+            ns1:opens "13:00" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "22:30" ;
+            ns1:dayOfWeek "Friday",
+                "Saturday",
+                "Sunday",
+                "Thursday" ;
+            ns1:opens "19:30" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -15088,16 +15273,16 @@
     ns1:image <https://ziclop.coopcycle.org/media/cache/restaurant_thumbnail/63/4e/634e69526520c.jpg> ;
     ns1:name "Bang Bang Ramen" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "15:30" ;
-            ns1:dayOfWeek "Saturday",
-                "Sunday" ;
-            ns1:opens "13:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:30" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday" ;
-            ns1:opens "19:30" ] ;
+            ns1:opens "19:30" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "15:30" ;
+            ns1:dayOfWeek "Saturday",
+                "Sunday" ;
+            ns1:opens "13:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
@@ -15155,16 +15340,16 @@
     ns1:image <https://ziclop.coopcycle.org/media/cache/restaurant_thumbnail/63/12/6312571cd318f.png> ;
     ns1:name "Pulcinella" ;
     ns1:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
-            ns1:closes "14:20" ;
-            ns1:dayOfWeek "Saturday",
-                "Thursday" ;
-            ns1:opens "13:00" ],
-        [ a ns1:OpeningHoursSpecification ;
             ns1:closes "22:30" ;
             ns1:dayOfWeek "Friday",
                 "Saturday",
                 "Thursday" ;
-            ns1:opens "19:30" ] ;
+            ns1:opens "19:30" ],
+        [ a ns1:OpeningHoursSpecification ;
+            ns1:closes "14:20" ;
+            ns1:dayOfWeek "Saturday",
+                "Thursday" ;
+            ns1:opens "13:00" ] ;
     ns1:potentialAction [ a ns1:OrderAction ;
             ns1:deliveryMethod "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet" ;
             ns1:target [ a ns1:EntryPoint ;
