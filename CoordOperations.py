@@ -1,4 +1,3 @@
-import requests
 from geopy.geocoders import *
 from geopy.distance import geodesic
 from geopy.exc import *
@@ -14,7 +13,7 @@ def validate_coordinates(latitude, longitude):
 
     try:
         location = geolocator.reverse((latitude, longitude), language='en')
-        print(f"Valid Coordinates: {location.address}")
+        print(f"Your address: {location.address}")
         return True
     except GeocoderQueryError as e:
         print(f"Invalid Coordinates: {e}")

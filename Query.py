@@ -19,7 +19,7 @@ def visualize(data, type, code_err = 2):
     visualize_table(nbr_resultat, code_err, table)
 
 def get_location_criteria():
-    print("Choose how to search for restaurants:")
+    print("Choose how to search for restaurants :")
     print("1. By city")
     print("2. By latitude and longitude")
     print("3. By distance from a place")
@@ -39,7 +39,7 @@ def get_location_criteria():
         latitude = input("Enter latitude: ")
         longitude = input("Enter longitude: ")
         if validate_coordinates(latitude, longitude):
-            max_distance = float(input("Enter maximum distance in kilometers: "))
+            max_distance = float(input("Enter maximum distance in kilometers (5Km by default if you press Enter): ")) or 5.0
         else :
             print("Invalid coordinates. Please try again.")
             return get_location_criteria()
@@ -47,13 +47,13 @@ def get_location_criteria():
     elif choice == "3":
         place = input("Enter the name of the place: ")
         if valid_place(place):
-            max_distance = float(input("Enter maximum distance in kilometers: "))
+            max_distance = float(input("Enter maximum distance in kilometers (5Km by default if you press Enter): ")) or 5.0
         else :
             print("Invalid place. Please try again.")
             return get_location_criteria()
         return {"type":"address" ,"coordinates": get_coordinates(place), "max_distance": max_distance}
     else:
-        print("Invalid choice. Please choose 1 or 2 or 3.")
+        print("Invalid choice. Please choose 1 or 2 or 3 or press Enter.")
         return get_location_criteria()
 
 #First query to get restaurants by city or geocordinates or address
@@ -160,7 +160,7 @@ def main():
         if args.rank_by == "distance":
             get_restaurants_by_ranking(day, time, None, None, "distance" , arg = None)
         elif args.rank_by == "price" :
-            max_price = str(input("Enter the max_price: "))
+            max_price = str(input("Enter the max_price (15 EUR by defaukt if you press Enter): ") or 15.0)
             get_restaurants_by_ranking(day, time, None, None, "price", max_price, arg = None)
         else:
             print("Invalid ranking option or user preferences. Please check your input.")
