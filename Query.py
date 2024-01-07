@@ -4,7 +4,7 @@ from TriplestoreFunctions import *
 from Date_time import *
 from DataToTable import *
 import argparse 
-from rdflib import Graph, Namespace, URIRef, Literal
+from rdflib import Graph, Namespace, URIRef
 
 def get_date_time():
   dates = get_date_from_user()
@@ -16,7 +16,7 @@ def get_date_time():
 def visualize(data, type, code_err = 2):
     table = data_table(data, type)
     nbr_resultat = len(table.rows)
-    visualize_table(nbr_resultat, code_err, table) # !!!!!!!!!!!
+    visualize_table(nbr_resultat, code_err, table)
 
 def get_location_criteria():
     print("Choose how to search for restaurants:")
@@ -31,7 +31,7 @@ def get_location_criteria():
             print(f"{i+1}. {list_of_cities[i]}")
         city = int(input("choose a city (1 or 2 etc.): "))
         if city > 0 and city <= len(list_of_cities):
-            return {"type":"city" ,"coordinates": list_of_cities[city-1],"max_distance":0}
+            return {"type":"city" ,"coordinates": list_of_cities[city-1],"max_distance":10}
         else :
             print("Invalid city. Please try again.")
             return get_location_criteria()
@@ -56,33 +56,8 @@ def get_location_criteria():
         print("Invalid choice. Please choose 1 or 2 or 3.")
         return get_location_criteria()
 
-   
-
-#Third query to get restaurants accepting delivery below a certain price.
-def get_restaurants_by_max_delivery_price(day, time, coordinates,max_distance, max_price):
-    search_query = get_by_max_price(day, time,max_price)
-    data = search_data(search_query)
-    data = find_restaurent_within_max_distance(data,coordinates,max_distance)
-    visualize(data[0], "rank", data[1])
-
-
-
-#Fourth query to rank restaurants by distance or minimum delivery price 
-def get_restaurants_by_ranking(day, time, coordinates, max_distance, rank_by, max_price=None):
-    if rank_by == "distance":
-        get_restaurants_by_place(day, time, coordinates, max_distance)
-       
-    elif rank_by == "price":
-        location = get_location_criteria()
-        get_restaurants_by_max_delivery_price(day, time, location["coordinates"], location["max_distance"], max_price)
-      
-    else:
-        print("Invalid ranking option. Please choose 'distance' or 'price'.")
-        return
-
-
-
-def get_restaurants_by_place(day,time, location, max_distance, arg = None):
+#First query to get restaurants by city or geocordinates or address
+def get_restaurants_by_place(day, time, location, max_distance, arg = None):
     if arg == None:
         location_criteria = get_location_criteria()
         max_distance = location_criteria["max_distance"]
@@ -98,12 +73,46 @@ def get_restaurants_by_place(day,time, location, max_distance, arg = None):
             result = (data, 2)
     else:
         result = find_restaurent_within_max_distance(data, location_criteria["coordinates"], max_distance)
-    #table = data_table(result[0], location_criteria["type"])
-    #nbr_resultat = len(table.rows)
-    visualize(result[0],location_criteria['type'],result[1])
+    
+    visualize(result[0], location_criteria['type'], result[1])
+
     return result, location_criteria['type']
 
+#Seconf query to get restaurants accepting delivery below a certain price.
+def get_restaurants_by_max_delivery_price(day, time, coordinates, max_distance, max_price, arg = None):
 
+    if arg == None:
+        location_criteria = get_location_criteria()
+        type = location_criteria["type"]
+        if type == "city":
+            coordinates = get_coordinates(location_criteria["coordinates"])
+            max_distance = 10
+        else:
+            coordinates = location_criteria["coordinates"]
+            max_distance = location_criteria["max_distance"]
+    else:
+        coordinates = coordinates
+        max_distance = max_distance
+        type = "geocord"
+
+    search_query = get_by_max_price(day, time, max_price)
+    data = search_data(search_query)
+    data = find_restaurent_within_max_distance(data, coordinates, max_distance)
+    visualize(data[0], "rank", data[1])
+
+#Tird query to rank restaurants by distance or minimum delivery price 
+def get_restaurants_by_ranking(day, time, coordinates, max_distance, rank_by, max_price=None, arg = None):
+    if rank_by == "distance":
+        print("Ranking restaurants by distance...")
+        get_restaurants_by_place(day, time, coordinates, max_distance, arg)
+       
+    elif rank_by == "price":
+        print("Ranking restaurants by minimum delivery price...")
+        get_restaurants_by_max_delivery_price(day, time, coordinates, max_distance, max_price, arg)
+      
+    else:
+        print("Invalid ranking option. Please choose 'distance' or 'price'.")
+        return
 
 #Get the preferences from the file pref-charpenay.ttl
 def get_user_preferences(uri):
@@ -140,17 +149,19 @@ def get_user_preferences(uri):
 def main():
     parser = argparse.ArgumentParser(description="CoopCycle restaurants query program:")
     parser.add_argument("--rank-by", choices=["distance", "price"], help="Ranking restaurants by distance or price")
-    parser.add_argument("--user-preferences", action="store_true", help="User preferences from .ttl file")
-    parser.add_argument("--manual-location", action="store_true", help="Get location criteria")
+    parser.add_argument("--user-preferences", action="store_true", help="User preferences from an RDF file")
+    parser.add_argument("--manual-location", action="store_true", help="Input manual location")
     args = parser.parse_args()
     
     if args.manual_location:
 
-        max_price = str(input("Enter the max_price: "))
+        day, time = get_date_time()
+
         if args.rank_by == "distance":
-            get_restaurants_by_ranking(None, None, None, None, "distance")
+            get_restaurants_by_ranking(day, time, None, None, "distance" , arg = None)
         elif args.rank_by == "price" :
-            get_restaurants_by_ranking(None, None, None, None, "price", max_price)
+            max_price = str(input("Enter the max_price: "))
+            get_restaurants_by_ranking(day, time, None, None, "price", max_price, arg = None)
         else:
             print("Invalid ranking option or user preferences. Please check your input.")
 
@@ -167,8 +178,13 @@ def main():
                 day, time = get_date_time()
                 
                 if 'location' in user_preferences:
-                    coordinates = user_preferences['location'][:2]
-                    max_distance = user_preferences['location'][2]
+
+                    if validate_coordinates(user_preferences["location"][:2][0], user_preferences["location"][:2][1]) :
+                        coordinates = user_preferences['location'][:2]
+                        max_distance = user_preferences['location'][2]
+                    else :
+                        coordinates = None
+                        max_distance = None
                 else:
                     coordinates = None
                     max_distance = None
@@ -178,10 +194,10 @@ def main():
                 location['coordinates'] = coordinates
 
                 if args.rank_by == "distance":
-                    get_restaurants_by_ranking(day, time, coordinates, max_distance, "distance")
+                    get_restaurants_by_ranking(day, time, location, max_distance, "distance", arg = 1)
                 elif args.rank_by == "price" and 'max_price' in user_preferences:
                     max_price = user_preferences['max_price'][0]
-                    get_restaurants_by_ranking(day, time, coordinates, max_distance, "price", max_price)
+                    get_restaurants_by_ranking(day, time, coordinates, max_distance, "price", max_price, arg = 1)
                 else:
                     print("Invalid ranking option or user preferences. Please check your input.")
             else:

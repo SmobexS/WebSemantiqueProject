@@ -1,7 +1,6 @@
 from rdflib import URIRef, Literal, BNode
 from TriplestoreFunctions import search_data
-from unicodeToStr import *
-import requests 
+from UnicodeToStr import *
 
 def format_term(term):
     if isinstance(term, URIRef):
