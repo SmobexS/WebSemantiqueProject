@@ -145,28 +145,6 @@ def search_by_place(day, time, type, coordinates):
     return search_query
 
 
-def get_lat_long_for_place(coordinates):
-    nominatim_endpoint = "https://nominatim.openstreetmap.org/search"
-    params = {"q": coordinates, "format": "json"}
-    headers = {"User-Agent": "YourApp/1.0"}
-
-    try:
-        response = requests.get(nominatim_endpoint, params=params, headers=headers)
-        response.raise_for_status()
-        data = response.json()
-
-        if data:
-            return float(data[0]["lat"]), float(data[0]["lon"])
-        else:
-            return None, None
-    except requests.exceptions.HTTPError as errh:
-        print("HTTP Error:", errh)
-    except requests.exceptions.RequestException as err:
-        print("Request Error:", err)
-        return None, None
-    
-
-
 def get_by_max_price(day, time, max_price=None):
     query = """
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns>
@@ -175,23 +153,40 @@ def get_by_max_price(day, time, max_price=None):
         PREFIX pwo: <https://projectw9s.com/object/>
         PREFIX pws: <https://projectw9s.com/subject/>
         PREFIX schema: <http://schema.org/>
+        PREFIX geof: <http://www.opengis.net/ont/geosparql#>
+        PREFIX unit: <http://qudt.org/vocab/unit#>
 
-
-        SELECT ?restaurant ?delivery_cost
+        SELECT ?restaurant ?name ?openingTime ?closingTime ?address ?latitude ?longitude 
         WHERE {
             ?restaurant a schema:Restaurant ;
-              schema:openingHoursSpecification [schema:opens ?openingTime;
-                                                schema:closes ?closingTime];
-              schema:potentialAction[
-               a schema:OrderAction;
-             schema:priceSpecification[
-                a schema:DeliveryChargeSpecification;
-              schema:eligibleTransactionVolume[
-               a schema:PriceSpecification;
-              schema:price ?delivery_cost ]]]
+            schema:name ?name;
+            schema:address ?address_link;
+            schema:openingHoursSpecification [
+            schema:opens ?openingTime ;
+            schema:closes ?closingTime ;
+            schema:dayOfWeek ?dayOfWeek;
+            ];
+            schema:potentialAction[
+            a schema:OrderAction;
+            schema:priceSpecification[
+            a schema:DeliveryChargeSpecification;
+            schema:eligibleTransactionVolume[
+            a schema:PriceSpecification;
+            schema:price ?delivery_cost ]]].
 
-        FILTER(?openingTime <= "%s" && ?closingTime > "%s" && ?delivery_cost <= "%s")
+            ?address_link a schema:PostalAddress;
+            schema:streetAddress ?address.
+            ?address_link a schema:PostalAddress;
+             schema:geo ?coordinates .
+             ?coordinates a schema:GeoCoordinates;
+             schema:longitude ?longitude ;
+             schema:latitude ?latitude .
+
+
+
+        FILTER(?dayOfWeek="%s" && ?openingTime <= "%s" && ?closingTime > "%s" && ?delivery_cost <= "%s")
     }
-    """ % (time,time ,max_price)
-    print(query)
+
+    
+    """ % (day,time,time ,max_price)
     return query

@@ -3,7 +3,7 @@ from prettytable import PrettyTable
 def data_table(data, type):
     table = PrettyTable()
     table.field_names = data["head"]["vars"]
-    if type == "city":
+    if type == "city" or "rank":
         for binding in data["results"]["bindings"]:
             table.add_row([binding["restaurant"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"]])
     else:
@@ -11,6 +11,8 @@ def data_table(data, type):
             table.add_row([binding["restaurant"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"], binding["distance from your location(m)"]["value"]])
 
     return(table)
+
+
 
 def visualize_table (nbr_resultat, code_er, table):
     if code_er == 0:
