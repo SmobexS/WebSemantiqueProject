@@ -14,7 +14,6 @@ def collect(url='https://coopcycle.org/coopcycle.json?_=1704296951899'):
     if len(graph) == 0:
 
         graph = json2rdf(url)
-        print("1")
         json_ld = JsonLDScraper(url)
         graph = jsonld_to_graph(json_ld, graph)
 
@@ -26,7 +25,6 @@ def collect(url='https://coopcycle.org/coopcycle.json?_=1704296951899'):
     else:
 
         graph = json2rdf(url)
-        print("2")
         json_ld = JsonLDScraper(url)
         graph = jsonld_to_graph(json_ld, graph)
         
@@ -39,9 +37,8 @@ def collect(url='https://coopcycle.org/coopcycle.json?_=1704296951899'):
         graph = graph.serialize(destination="combined_rdf.txt" ,format='turtle')
         
 
-
 def execute_collect():
-    while True:
-        sys.stdout = None 
-        thread = threading.Thread(target=collect)
-        thread.start()
+
+    thread = threading.Thread(target=collect)
+    thread.start()
+    
