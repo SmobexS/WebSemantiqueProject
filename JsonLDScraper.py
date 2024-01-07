@@ -3,23 +3,32 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import json
 from collections import defaultdict
-from urllib.parse import urlparse , urlunparse
+from urllib.parse import urlparse
+from getPrice import *
 
 def parse_url(url):
     parsed_url = urlparse(url)
     main_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
     return(main_url)
 
-def parse_url_contry(url):
+"""def parse_url_contry(url):
     parsed_url = urlparse(url)
     main_url_with_path = urlunparse((parsed_url.scheme, parsed_url.netloc, parsed_url.path, '', '', ''))
-    return(main_url_with_path)
+    return(main_url_with_path)"""
 
-
-def JsonLDScraper (json_file) :
-    data = pd.read_json(json_file)
+def JsonLDScraper (link) :
 
     all_restaurants = defaultdict(lambda : defaultdict(dict))
+
+    response = requests.get(link)
+
+    if response.status_code == 200:
+        
+        data = response.json()
+        data = pd.DataFrame(data)
+    else:
+        print(f"Failed to fetch data. Status code: {response.status_code}")
+        return all_restaurants
 
     coops_restaurants_urls = []
 
@@ -36,7 +45,6 @@ def JsonLDScraper (json_file) :
     for coop_restaurants_url in coops_restaurants_urls:
 
         coop_url = parse_url(coop_restaurants_url)
-        coop_url_contry = parse_url_contry(coop_restaurants_url)
 
         response = requests.get(coop_restaurants_url)
         html_content = response.text
@@ -56,13 +64,27 @@ def JsonLDScraper (json_file) :
             if json_ld:
                 try:
                     json_ld_data = json.loads(json_ld.string)
-
-                    idd = json_ld_data["@id"]=restaurant_url
+                    idd = coop_url + json_ld_data["@id"]
                     json_ld_data["@id"] = idd
-                    address = json_ld_data["address"]["@id"].replace("/api/addresses", coop_url_contry +"/addresses")
+                    json_ld_data["restaurant"]= restaurant_url
+                    address = coop_url + json_ld_data["address"]["@id"]
                     json_ld_data["address"]["@id"] = address
-         
-                    all_restaurants[coop_url][restaurant_url] = json_ld_data
+
+                    if not (json_ld_data["potentialAction"].keys().__contains__("priceSpecification")):
+
+                        price = get_price(restaurant_url)
+
+                        if price is not None:
+
+                            price_dict = {"@type": "DeliveryChargeSpecification",
+                            "appliesToDeliveryMethod": "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet",
+                            "eligibleTransactionVolume": {"@type": "PriceSpecification",
+                                                            "price": f"{price}",
+                                                            "priceCurrency": "EUR"}}
+
+                            json_ld_data["potentialAction"]["priceSpecification"] = price_dict
+
+                    all_restaurants[coop_url][idd] = json_ld_data
                 except json.JSONDecodeError:
                     print("Erreur lors du décodage JSON-LD")
 

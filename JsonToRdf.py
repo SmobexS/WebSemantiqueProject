@@ -1,13 +1,24 @@
 from rdflib import Namespace, Literal, ConjunctiveGraph, URIRef, RDFS
 import pandas as pd
+import requests
 
 pwss = Namespace("https://ProjectW9s.com/subject/")
 pwso = Namespace("https://ProjectW9s.com/object/")
 pwsp = Namespace("https://ProjectW9s.com/predicate/")
 
-def json2rdf (json_file) :
-    data = pd.read_json(json_file)
+def json2rdf (link) :
+
     graph = ConjunctiveGraph()
+
+    response = requests.get(link)
+
+    if response.status_code == 200:
+        
+        data = response.json()
+        data = pd.DataFrame(data)
+    else:
+        print(f"Failed to fetch data. Status code: {response.status_code}")
+        return graph
 
     for index, row in data.iterrows():
 

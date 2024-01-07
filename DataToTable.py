@@ -5,10 +5,10 @@ def data_table(data, type):
     table.field_names = data["head"]["vars"]
     if type == "city" :
         for binding in data["results"]["bindings"]:
-            table.add_row([binding["restaurant"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"]])
+            table.add_row([binding["restaurant_link"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"]])
     else:
         for binding in data["results"]["bindings"]:
-            table.add_row([binding["restaurant"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"], binding["distance from your location(m)"]["value"]])
+            table.add_row([binding["restaurant_link"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"], binding["distance from your location(m)"]["value"]])
 
     return(table)
 

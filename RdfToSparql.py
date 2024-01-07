@@ -45,9 +45,10 @@ def generate_search_query(date, time):
     search_query += "PREFIX pwo:<https://ProjectW9s.com/object/>\n"
     search_query += "PREFIX pws:<https://ProjectW9s.com/subject/>\n"
     search_query += "PREFIX schema: <http://schema.org/>\n"
-    search_query += "SELECT ?restaurant ?name ?openingTime ?closingTime ?address\n"
+    search_query += "SELECT ?restaurant_link ?name ?openingTime ?closingTime ?address\n"
     search_query += "WHERE {\n"
     search_query += "?restaurant a schema:Restaurant ;\n"
+    search_query += "schema:restaurant ?restaurant_link ;\n"
     search_query += "schema:name ?name;\n"
     search_query += "schema:address ?address_link;\n"
     search_query += "schema:openingHoursSpecification [\n"
@@ -100,9 +101,10 @@ def search_by_place(day, time, type, coordinates):
 
     if type == "address" or type == "geocord":
         search_query += (
-            "SELECT ?restaurant ?name ?openingTime ?closingTime ?address ?latitude ?longitude\n"
+            "SELECT ?restaurant_link ?name ?openingTime ?closingTime ?address ?latitude ?longitude\n"
             "WHERE {\n"
             "?restaurant a schema:Restaurant ;\n"
+            "schema:restaurant ?restaurant_link ;\n"
             "schema:name ?name;\n"
             "schema:address ?address_link;\n"
             "schema:openingHoursSpecification [\n"
@@ -122,9 +124,10 @@ def search_by_place(day, time, type, coordinates):
                 )
     elif type == "city":
         search_query += (
-            "SELECT ?restaurant ?name ?openingTime ?closingTime ?address\n"
+            "SELECT ?restaurant_link ?name ?openingTime ?closingTime ?address\n"
             "WHERE {\n"
             "?restaurant a schema:Restaurant ;\n"
+            "schema:restaurant ?restaurant_link ;\n"
             "schema:name ?name;\n"
             "schema:address ?address_link;\n"
             "schema:openingHoursSpecification [\n"
@@ -155,9 +158,10 @@ def get_by_max_price(day, time, max_price=None):
         PREFIX geof: <http://www.opengis.net/ont/geosparql#>
         PREFIX unit: <http://qudt.org/vocab/unit#>
 
-        SELECT ?restaurant ?name ?openingTime ?closingTime ?address ?latitude ?longitude 
+        SELECT ?restaurant_link ?name ?openingTime ?closingTime ?address ?latitude ?longitude 
         WHERE {
             ?restaurant a schema:Restaurant ;
+            schema:restaurant ?restaurant_link ;
             schema:name ?name;
             schema:address ?address_link;
             schema:openingHoursSpecification [

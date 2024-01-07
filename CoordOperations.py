@@ -35,11 +35,11 @@ def find_restaurent_within_max_distance(data, coordinates, max_distance):
         return (data, 0)
     else:
         result = {"head":dict(), "results":{"bindings":[]}}
-        result["head"]["vars"] = ["restaurant", "name", "openingTime", "closingTime", "address", "distance from your location(m)"]
+        result["head"]["vars"] = ["restaurant_link", "name", "openingTime", "closingTime", "address", "distance from your location(m)"]
         for binding in data["results"]["bindings"]:
             if within_max_distance(binding["latitude"]["value"], binding["longitude"]["value"], coordinates, max_distance):
                 bind = dict()
-                bind["restaurant"] = binding["restaurant"]
+                bind["restaurant_link"] = binding["restaurant_link"]
                 bind["name"] = binding["name"]
                 bind["openingTime"] = binding["openingTime"]
                 bind["closingTime"] = binding["closingTime"]

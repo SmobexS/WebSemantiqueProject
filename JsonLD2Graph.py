@@ -1,10 +1,24 @@
-from rdflib import ConjunctiveGraph, Namespace
+from rdflib import ConjunctiveGraph, Namespace, URIRef
 
-SCHEMA = Namespace('http://schema.org/')
-XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
+pwsp = Namespace("https://ProjectW9s.com/predicate/")
 
-def jsonld_to_graph(jsonld_data):
-    graph = ConjunctiveGraph()
-    graph.parse(data=jsonld_data, format='json-ld')
+def jsonld_to_graph(jsonld_data, graph):
 
-    return graph
+    data_comb = ConjunctiveGraph()
+    jsonld_graph = ConjunctiveGraph()
+
+    for cop, restos in jsonld_data.items():
+        for resto, jsonld in restos.items():
+
+            temp_graph = ConjunctiveGraph()
+
+            temp_graph.parse(data=jsonld, format='json-ld')
+            temp_graph.add((URIRef(cop), pwsp.CanDeliverFoodOf, URIRef(resto)))
+
+            jsonld_graph += temp_graph
+
+    data_comb += graph
+    data_comb += jsonld_graph
+
+
+    return data_comb
