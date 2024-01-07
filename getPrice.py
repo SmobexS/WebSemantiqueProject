@@ -36,9 +36,11 @@ def get_price(url):
             verification = price_span.find('small')
             if verification is not None:
                 price_re = re.findall(r'(\d+,\d+)', verification.text)
-                price = price_re[0]
+                str_price = price_re[0]
+                price = str_price.replace(',','.')
             else:
-                price = re.findall(r'(\d+,\d+)',price_span.text)[0]
+                str_price = re.findall(r'(\d+,\d+)',price_span.text)[0]
+                price = str_price.replace(',','.')
 
             driver.quit()
 
