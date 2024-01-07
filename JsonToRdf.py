@@ -1,4 +1,4 @@
-from rdflib import Namespace, Literal, ConjunctiveGraph, URIRef, RDFS
+from rdflib import Namespace, Literal, ConjunctiveGraph, URIRef
 import pandas as pd
 import requests
 

@@ -4,7 +4,6 @@ from JsonToRdf import *
 from RdfToSparql import *
 from JsonLDScraper import *
 from JsonLD2Graph import *
-import sys
 
 
 def collect(url='https://coopcycle.org/coopcycle.json?_=1704296951899'):
