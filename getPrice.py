@@ -19,32 +19,35 @@ def get_price(url):
 
     driver = webdriver.Chrome(options=chrome_options)
 
-    driver.get(url)
-    time.sleep(3)
+    try:
+        driver.get(url)
+        time.sleep(3)
 
-    try :
-        WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located((By.ID, "cart"))
-        )
+        try :
+            WebDriverWait(driver, 10).until(
+                EC.visibility_of_element_located((By.ID, "cart"))
+            )
 
-        cart_html = driver.find_element(By.ID, "cart").get_attribute("outerHTML")
+            cart_html = driver.find_element(By.ID, "cart").get_attribute("outerHTML")
 
-        soup = BeautifulSoup(cart_html, 'html.parser')
+            soup = BeautifulSoup(cart_html, 'html.parser')
 
-        price_span = soup.find('span', class_='cart-heading--title-or-errors')
-        verification = price_span.find('small')
-        if verification is not None:
-            price_re = re.findall(r'(\d+,\d+)', verification.text)
-            price = price_re[0]
-        else:
-            price = re.findall(r'(\d+,\d+)',price_span.text)[0]
+            price_span = soup.find('span', class_='cart-heading--title-or-errors')
+            verification = price_span.find('small')
+            if verification is not None:
+                price_re = re.findall(r'(\d+,\d+)', verification.text)
+                price = price_re[0]
+            else:
+                price = re.findall(r'(\d+,\d+)',price_span.text)[0]
 
+            driver.quit()
+
+            return price
+        except :
+
+            driver.quit()
+
+            return None
+    except:
         driver.quit()
-
-        return price
-    except :
-
-        driver.quit()
-
         return None
-    
