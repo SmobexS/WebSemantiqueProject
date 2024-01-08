@@ -1,3 +1,4 @@
+from urllib.parse import urlparse
 from CoordOperations import *
 from RdfToSparql import *
 from TriplestoreFunctions import *
@@ -72,7 +73,7 @@ def get_restaurants_by_place(day, time, location, max_distance, arg = None):
         else:
             result = (data, 2)
     else:
-        result = find_restaurent_within_max_distance(data, location_criteria["coordinates"], max_distance, "distance")
+        result = find_restaurent_within_max_distance(data, location_criteria["coordinates"], max_distance)
     
     visualize(result[0], location_criteria['type'], result[1])
 
@@ -97,7 +98,7 @@ def get_restaurants_by_max_delivery_price(day, time, coordinates, max_distance, 
 
     search_query = get_by_max_price(day, time, max_price)
     data = search_data(search_query)
-    data = find_restaurent_within_max_distance(data, coordinates, max_distance, "price")
+    data = find_restaurent_within_max_distance(data, coordinates, max_distance)
     visualize(data[0], "rank", data[1])
 
 #Tird query to rank restaurants by distance or minimum delivery price 
@@ -117,7 +118,16 @@ def get_restaurants_by_ranking(day, time, coordinates, max_distance, rank_by, ma
 #Get the preferences from the file pref-charpenay.ttl
 def get_user_preferences(uri):
     g = Graph()
-    g.parse(uri, format="turtle")
+    parsed_url = urlparse(uri)
+    if parsed_url.scheme and parsed_url.netloc:
+            g.parse(uri, format="turtle")
+    elif parsed_url.scheme == '' and parsed_url.netloc == '' and parsed_url.path:
+        with open(uri, 'r') as file:
+            g.parse(file, format="turtle")
+    elif isinstance(uri,Graph):
+        g=uri
+    else:
+        print("Invalid input. Please provide a graph, URL or an RDF file")
     user_preferences = {}
     schema = Namespace("http://schema.org/")
     print("Number of triples in the graph:", len(g))
@@ -149,7 +159,7 @@ def get_user_preferences(uri):
 def main():
     parser = argparse.ArgumentParser(description="CoopCycle restaurants query program:")
     parser.add_argument("--rank-by", choices=["distance", "price"], help="Ranking restaurants by distance or price")
-    parser.add_argument("--user-preferences", action="store_true", help="User preferences from an RDF file")
+    parser.add_argument("--user-preferences", help="User preferences from an RDF file")
     parser.add_argument("--manual-location", action="store_true", help="Input manual location")
     args = parser.parse_args()
     
@@ -166,8 +176,12 @@ def main():
             print("Invalid ranking option or user preferences. Please check your input.")
 
     elif args.user_preferences:
-        pref_uri = "https://www.emse.fr/~zimmermann/Teaching/SemWeb/Project/pref-charpenay.ttl"
-        user_preferences = get_user_preferences(pref_uri)
+        user_pref_input = args.user_preferences
+
+        print(user_pref_input)
+        user_preferences = get_user_preferences(user_pref_input)
+        #pref_uri = "https://www.emse.fr/~zimmermann/Teaching/SemWeb/Project/pref-charpenay.ttl"
+        #user_preferences = get_user_preferences(pref_uri)
 
         if 'seller' in user_preferences:
             print("User is looking for restaurants near:", user_preferences.get('location', "Not specified"))
