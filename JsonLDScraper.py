@@ -79,11 +79,14 @@ def JsonLDScraper (link) :
                             price_dict = {"@type": "DeliveryChargeSpecification",
                             "appliesToDeliveryMethod": "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet",
                             "eligibleTransactionVolume": {"@type": "PriceSpecification",
-                                                            "price": f"{price}",
+                                                            "price": price,
                                                             "priceCurrency": "EUR"}}
 
                             json_ld_data["potentialAction"]["priceSpecification"] = price_dict
-
+                    else:
+                        price_str = json_ld_data["potentialAction"]["priceSpecification"]["eligibleTransactionVolume"]["price"]
+                        price = float(price_str)
+                        json_ld_data["potentialAction"]["priceSpecification"]["eligibleTransactionVolume"]["price"] = price
                     all_restaurants[coop_url][idd] = json_ld_data
                 except json.JSONDecodeError:
                     print("Erreur lors du décodage JSON-LD")

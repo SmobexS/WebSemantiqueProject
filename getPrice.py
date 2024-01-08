@@ -44,7 +44,7 @@ def get_price(url):
 
             driver.quit()
 
-            return price
+            return float(price)
         except :
 
             driver.quit()

@@ -94,8 +94,6 @@ def search_by_place(day, time, type, coordinates):
         "PREFIX pwo:<https://ProjectW9s.com/object/>\n"
         "PREFIX pws:<https://ProjectW9s.com/subject/>\n"
         "PREFIX schema: <http://schema.org/>\n"
-        "PREFIX geof: <http://www.opengis.net/ont/geosparql#>\n"
-        "prefix unit: <http://qudt.org/vocab/unit#>\n"
         
     )
 
@@ -155,8 +153,6 @@ def get_by_max_price(day, time, max_price=None):
         PREFIX pwo: <https://projectw9s.com/object/>
         PREFIX pws: <https://projectw9s.com/subject/>
         PREFIX schema: <http://schema.org/>
-        PREFIX geof: <http://www.opengis.net/ont/geosparql#>
-        PREFIX unit: <http://qudt.org/vocab/unit#>
 
         SELECT ?restaurant_link ?name ?openingTime ?closingTime ?address ?latitude ?longitude 
         WHERE {
