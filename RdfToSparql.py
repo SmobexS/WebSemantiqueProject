@@ -186,6 +186,7 @@ def get_by_max_price(day, time, max_price=None):
         FILTER(?dayOfWeek="%s" && ?openingTime <= "%s" && ?closingTime > "%s" && ?delivery_cost <= %f)
     }
 
+    ORDER BY ?delivery_cost
     
     """ % (day,time,time ,max_price)
     return query

@@ -58,7 +58,7 @@ def find_restaurent_within_max_distance(data, coordinates, max_distance, type):
             return (data, 0)
         else:
             result = {"head":dict(), "results":{"bindings":[]}}
-            result["head"]["vars"] = ["restaurant_link", "name", "openingTime", "closingTime", "address", "minOrderPrice", "distance from your location(m)"]
+            result["head"]["vars"] = ["restaurant_link", "name", "openingTime", "closingTime", "address", "minimum order price", "distance from your location(m)"]
             for binding in data["results"]["bindings"]:
                 if within_max_distance(binding["latitude"]["value"], binding["longitude"]["value"], coordinates, max_distance):
                     bind = dict()
@@ -67,12 +67,13 @@ def find_restaurent_within_max_distance(data, coordinates, max_distance, type):
                     bind["openingTime"] = binding["openingTime"]
                     bind["closingTime"] = binding["closingTime"]
                     bind["address"] = binding["address"]
-                    bind["minOrderPrice"] = binding["delivery_cost"]
-                    bind["minOrderPrice"]["value"] = str(bind["minOrderPrice"]["value"])
-                    bind["minOrderPrice"]["value"] = bind["minOrderPrice"]["value"] [:4] + " EUR"
+                    bind["minimum order price"] = binding["delivery_cost"]
+                    bind["minimum order price"]["value"] = str(bind["minimum order price"]["value"])
+                    bind["minimum order price"]["value"] = bind["minimum order price"]["value"] [:4] + " EUR"
                     bind["distance from your location(m)"] = {"value":get_distance_between_coordinates(coordinates, (binding["latitude"]["value"], binding["longitude"]["value"]))*1000}
                     result["results"]["bindings"].append(bind)
             result = sort_by_distance(result)
+            result = sort_by_price(result)
             if len(result["results"]["bindings"]) == 0:
                 return (result, 1)
             else:
@@ -92,4 +93,8 @@ def get_distance_between_coordinates(coordinates1, coordinates2):
 
 def sort_by_distance(data):
     data["results"]["bindings"].sort(key=lambda x: x["distance from your location(m)"]["value"])
+    return data
+
+def sort_by_price(data):
+    data["results"]["bindings"].sort(key=lambda x: x["minimum order price"]["value"])
     return data

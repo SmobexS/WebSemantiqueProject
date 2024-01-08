@@ -9,7 +9,7 @@ def data_table(data, type):
     
     elif type == "price":
         for binding in data["results"]["bindings"]:
-            table.add_row([binding["restaurant_link"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"], binding["minOrderPrice"]["value"], binding["distance from your location(m)"]["value"]])    
+            table.add_row([binding["restaurant_link"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"], binding["minimum order price"]["value"], binding["distance from your location(m)"]["value"]])    
     
     else:
         for binding in data["results"]["bindings"]:
