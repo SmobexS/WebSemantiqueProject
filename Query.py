@@ -160,7 +160,7 @@ def main():
         if args.rank_by == "distance":
             get_restaurants_by_ranking(day, time, None, None, "distance" , arg = None)
         elif args.rank_by == "price" :
-            max_price = str(input("Enter the max_price (15 EUR by defaukt if you press Enter): ") or 15.0)
+            max_price = float(input("Enter the max price (15.00 EUR by defaukt if you press Enter): ") or 15.0)
             get_restaurants_by_ranking(day, time, None, None, "price", max_price, arg = None)
         else:
             print("Invalid ranking option or user preferences. Please check your input.")
@@ -209,8 +209,6 @@ def main():
             print("Error: When using --rank-by, --user-preferences is required.")
         else:
             print("Error: --rank-by option is required.")
-
-   
 
 
 if __name__ == "__main__":

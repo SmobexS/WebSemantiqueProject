@@ -39,7 +39,7 @@ def import_data (fuseki_endpoint_url='http://localhost:3030/ProjetWebSementic/')
 
     return(import_result)
 
-def insert_data(insert_query):
+def insert_data(insert_query, fuseki_endpoint_url='http://localhost:3030/ProjetWebSementic/'):
 
     triplets = SPARQLWrapper(fuseki_endpoint_url + 'update')
     triplets.setMethod(POST)
@@ -48,7 +48,7 @@ def insert_data(insert_query):
 
     return(import_data(fuseki_endpoint_url))
 
-def delete_data():
+def delete_data(fuseki_endpoint_url='http://localhost:3030/ProjetWebSementic/'):
     
     delete_query = "DELETE WHERE {?sub ?pred ?obj .}"
     
@@ -57,7 +57,7 @@ def delete_data():
     triplets.setQuery(delete_query)
     triplets.query()
 
-def search_data(search_query):
+def search_data(search_query, fuseki_endpoint_url='http://localhost:3030/ProjetWebSementic/'):
     triplets = SPARQLWrapper(fuseki_endpoint_url + 'query')
     triplets.setMethod(POST)
     triplets.setReturnFormat(JSON)

@@ -1,0 +1,32 @@
+PREFIX schema: <http://schema.org/> 
+PREFIX wd: <http://www.wikidata.org/entity/> 
+PREFIX pwp: <https://ProjectW9s.com/predicate/>
+PREFIX pwo:<https://ProjectW9s.com/object/>
+PREFIX pws:<https://ProjectW9s.com/subject/>
+
+<https://ProjectW9s.com/subject/user1>
+    a schema:Person ;
+    schema:name "Saad RIFFI TEMSAMANI" ;
+    schema:address [
+        a schema:PostalAddress ;
+        schema:postalCode "42100" ;
+        schema:addressLocality "Saint-Étienne"
+    ] ;
+    schema:seeks [
+        schema:seller <https://coursiers-stephanois.coopcycle.org/api/restaurants/20> ;
+        schema:priceSpecification [
+            schema:maxPrice 15.0 ;
+            schema:priceCurrency "EUR"
+        ] ;
+        schema:availableAtOrFrom [
+            schema:geoWithin [
+                a schema:GeoCircle ;
+                schema:geoMidpoint [
+                    schema:longitude 45.42155696959038;
+                    schema:latitude 4.428230684660482
+                ] ;
+                schema:geoRadius 2000
+            ]
+        ] ;
+        schema:itemOfferred wd:Q728206
+    ] .

@@ -189,3 +189,14 @@ def get_by_max_price(day, time, max_price=None):
     
     """ % (day,time,time ,max_price)
     return query
+
+def insert_query_user():
+
+    query = ""
+
+
+def search_user (name):
+
+    query = f"SELECT * WHERE {{?sub schema:name {name} .}}"
+
+    return query

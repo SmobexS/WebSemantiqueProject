@@ -1,0 +1,29 @@
+@prefix schema: <http://schema.org/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+
+<#me>
+    a schema:Person ;
+    schema:name "Iness Bouabid" ;
+    schema:address [
+        a schema:PostalAddress ;
+        schema:postalCode "69007" ;
+        schema:addressLocality "Lyon"
+    ] ;
+    schema:seeks [
+        schema:seller <https://coursiers-stephanois.coopcycle.org/api/restaurants/58> ;
+        schema:priceSpecification [
+            schema:maxPrice 20.0 ;
+            schema:priceCurrency "EUR"
+        ] ;
+        schema:availableAtOrFrom [
+            schema:geoWithin [
+                a schema:GeoCircle ;
+                schema:geoMidpoint [
+                    schema:longitude 45.43775366089692;
+                    schema:latitude 4.390299772436285
+                ] ;
+                schema:geoRadius 2000
+            ]
+        ] ;
+        schema:itemOfferred wd:Q899696
+    ] .
