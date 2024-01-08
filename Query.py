@@ -72,7 +72,7 @@ def get_restaurants_by_place(day, time, location, max_distance, arg = None):
         else:
             result = (data, 2)
     else:
-        result = find_restaurent_within_max_distance(data, location_criteria["coordinates"], max_distance)
+        result = find_restaurent_within_max_distance(data, location_criteria["coordinates"], max_distance, "distance")
     
     visualize(result[0], location_criteria['type'], result[1])
 
@@ -97,7 +97,7 @@ def get_restaurants_by_max_delivery_price(day, time, coordinates, max_distance, 
 
     search_query = get_by_max_price(day, time, max_price)
     data = search_data(search_query)
-    data = find_restaurent_within_max_distance(data, coordinates, max_distance)
+    data = find_restaurent_within_max_distance(data, coordinates, max_distance, "price")
     visualize(data[0], "rank", data[1])
 
 #Tird query to rank restaurants by distance or minimum delivery price 

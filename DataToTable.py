@@ -6,6 +6,11 @@ def data_table(data, type):
     if type == "city" :
         for binding in data["results"]["bindings"]:
             table.add_row([binding["restaurant_link"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"]])
+    
+    elif type == "price":
+        for binding in data["results"]["bindings"]:
+            table.add_row([binding["restaurant_link"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"], binding["delivery_cost"]["value"], binding["distance from your location(m)"]["value"]])    
+    
     else:
         for binding in data["results"]["bindings"]:
             table.add_row([binding["restaurant_link"]["value"], binding["name"]["value"], binding["openingTime"]["value"], binding["closingTime"]["value"], binding["address"]["value"], binding["distance from your location(m)"]["value"]])

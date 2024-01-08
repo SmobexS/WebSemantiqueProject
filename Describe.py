@@ -211,9 +211,9 @@ def get_profile(name):
     
     return graph
 
-def creat_user_graph(name, location, postalcode, max_distance, max_price, ranked_by):
+def creat_user_graph(name, location, postalcode, max_distance, max_price, ranked_by, longitude, latitude):
     
-    insert_query = insert_query_user(name, location, postalcode, max_distance, max_price, ranked_by)
+    insert_query = insert_query_user(name, location, postalcode, max_distance, max_price, ranked_by, longitude, latitude)
     graph = insert_data(insert_query, 'http://localhost:3030/Users/')
 
     return graph

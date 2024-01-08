@@ -30,27 +30,52 @@ def valid_place(place):
         print(f"Invalid Place: {e}")
         return False
     
-def find_restaurent_within_max_distance(data, coordinates, max_distance):
-    if len(data["results"]["bindings"]) == 0:
-        return (data, 0)
-    else:
-        result = {"head":dict(), "results":{"bindings":[]}}
-        result["head"]["vars"] = ["restaurant_link", "name", "openingTime", "closingTime", "address", "distance from your location(m)"]
-        for binding in data["results"]["bindings"]:
-            if within_max_distance(binding["latitude"]["value"], binding["longitude"]["value"], coordinates, max_distance):
-                bind = dict()
-                bind["restaurant_link"] = binding["restaurant_link"]
-                bind["name"] = binding["name"]
-                bind["openingTime"] = binding["openingTime"]
-                bind["closingTime"] = binding["closingTime"]
-                bind["address"] = binding["address"]
-                bind["distance from your location(m)"] = {"value":get_distance_between_coordinates(coordinates, (binding["latitude"]["value"], binding["longitude"]["value"]))*1000}
-                result["results"]["bindings"].append(bind)
-        result = sort_by_distance(result)
-        if len(result["results"]["bindings"]) == 0:
-            return (result, 1)
+def find_restaurent_within_max_distance(data, coordinates, max_distance, type):
+    if type == "distance" :
+        if len(data["results"]["bindings"]) == 0:
+            return (data, 0)
         else:
-            return (result, 2)
+            result = {"head":dict(), "results":{"bindings":[]}}
+            result["head"]["vars"] = ["restaurant_link", "name", "openingTime", "closingTime", "address", "distance from your location(m)"]
+            for binding in data["results"]["bindings"]:
+                if within_max_distance(binding["latitude"]["value"], binding["longitude"]["value"], coordinates, max_distance):
+                    bind = dict()
+                    bind["restaurant_link"] = binding["restaurant_link"]
+                    bind["name"] = binding["name"]
+                    bind["openingTime"] = binding["openingTime"]
+                    bind["closingTime"] = binding["closingTime"]
+                    bind["address"] = binding["address"]
+                    bind["distance from your location(m)"] = {"value":get_distance_between_coordinates(coordinates, (binding["latitude"]["value"], binding["longitude"]["value"]))*1000}
+                    result["results"]["bindings"].append(bind)
+            result = sort_by_distance(result)
+            if len(result["results"]["bindings"]) == 0:
+                return (result, 1)
+            else:
+                return (result, 2)
+            
+    elif type == "price" :
+        if len(data["results"]["bindings"]) == 0:
+            return (data, 0)
+        else:
+            result = {"head":dict(), "results":{"bindings":[]}}
+            result["head"]["vars"] = ["restaurant_link", "name", "openingTime", "closingTime", "address", "minOrderPrice", "distance from your location(m)"]
+            for binding in data["results"]["bindings"]:
+                if within_max_distance(binding["latitude"]["value"], binding["longitude"]["value"], coordinates, max_distance):
+                    bind = dict()
+                    bind["restaurant_link"] = binding["restaurant_link"]
+                    bind["name"] = binding["name"]
+                    bind["openingTime"] = binding["openingTime"]
+                    bind["closingTime"] = binding["closingTime"]
+                    bind["address"] = binding["address"]
+                    bind["minOrderPrice"] = binding["delivery_cost"]
+                    bind["distance from your location(m)"] = {"value":get_distance_between_coordinates(coordinates, (binding["latitude"]["value"], binding["longitude"]["value"]))*1000}
+                    result["results"]["bindings"].append(bind)
+            result = sort_by_distance(result)
+            if len(result["results"]["bindings"]) == 0:
+                return (result, 1)
+            else:
+                return (result, 2)
+
         
 def within_max_distance(latitude, longitude, coordinates, max_distance):
     distance = get_distance_between_coordinates(coordinates, (latitude, longitude))
