@@ -15,8 +15,7 @@ def get_date_from_user() :
         date_string = input("Enter a date (dd-mm-yyyy) (Today by default if you press Enter) : ") or datetime.now().strftime("%d-%m-%Y")
         try:
             date_chek = datetime.strptime(date_string, "%d-%m-%Y")
-            date_chek = date_chek.strftime("%d-%m-%Y")
-            now = datetime.now().strftime("%d-%m-%Y")
+            now = datetime.now()
             if date_chek < now :
                 print("Invalid date format. Please try again.")
             else:
@@ -36,7 +35,7 @@ def get_time_from_user(date_string) :
         try:
             time_chek = datetime.strptime(time_string, "%H:%M")
             time_chek = time_chek.strftime("%H:%M")
-            if time_chek < datetime.now().strftime("%H:%M") and date_string == datetime.now().strftime("%d-%m-%Y"):
+            if time_chek < datetime.now().strftime("%H:%M") and (datetime.strptime(date_string, "%d-%m-%Y") == datetime.now()):
                 print("Invalid time format. Please try again.")
             else:
                 valid_time = True
