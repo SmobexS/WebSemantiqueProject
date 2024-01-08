@@ -35,7 +35,7 @@ def get_time_from_user(date_string) :
         try:
             time_chek = datetime.strptime(time_string, "%H:%M")
             time_chek = time_chek.strftime("%H:%M")
-            if time_chek < datetime.now().strftime("%H:%M") and (datetime.strptime(date_string, "%d-%m-%Y") == datetime.now()):
+            if time_chek < datetime.now().strftime("%H:%M") and date_string == datetime.now().strftime("%d-%m-%Y"):
                 print("Invalid time format. Please try again.")
             else:
                 valid_time = True
