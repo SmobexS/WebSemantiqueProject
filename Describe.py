@@ -91,7 +91,8 @@ def register():
 
         location = input("Enter your adress : ")
         postalcode = input("Enter your postal code : ")
-        max_distance = float(input("Enter maximum distance that you prefer to be between you and the restaurant in kilometers (5Km by default if you press Enter): ")) or 5.0
+        max_distance = input("Enter maximum distance in kilometers (5Km by default if you press Enter): ") or 5
+        max_distance = float(max_distance)
         max_price = float(input("Enter the max price you prefer for your order (15 EUR by defaukt if you press Enter): ") or 15.0)
         ranked_by = input("How do you prefer to rank the results of your research : \n1. By distance (By default if you press Enter)\n2. By price\n") or "distance"
 

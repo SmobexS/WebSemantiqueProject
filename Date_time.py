@@ -16,6 +16,8 @@ def get_date_from_user() :
         try:
             date_chek = datetime.strptime(date_string, "%d-%m-%Y")
             now = datetime.now()
+            now = now.strftime("%d-%m-%Y")
+            now = datetime.strptime(now, "%d-%m-%Y")
             if date_chek < now :
                 print("Invalid date format. Please try again.")
             else:

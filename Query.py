@@ -39,7 +39,8 @@ def get_location_criteria():
         latitude = input("Enter latitude: ")
         longitude = input("Enter longitude: ")
         if validate_coordinates(latitude, longitude):
-            max_distance = float(input("Enter maximum distance in kilometers (5Km by default if you press Enter): ")) or 5.0
+            max_distance = input("Enter maximum distance in kilometers (5Km by default if you press Enter): ") or 5
+            max_distance = float(max_distance)
         else :
             print("Invalid coordinates. Please try again.")
             return get_location_criteria()
@@ -47,7 +48,8 @@ def get_location_criteria():
     elif choice == "3":
         place = input("Enter the name of the place: ")
         if valid_place(place):
-            max_distance = float(input("Enter maximum distance in kilometers (5Km by default if you press Enter): ")) or 5.0
+            max_distance = input("Enter maximum distance in kilometers (5Km by default if you press Enter): ") or 5
+            max_distance = float(max_distance)
         else :
             print("Invalid place. Please try again.")
             return get_location_criteria()
@@ -98,7 +100,7 @@ def get_restaurants_by_max_delivery_price(day, time, coordinates, max_distance, 
     search_query = get_by_max_price(day, time, max_price)
     data = search_data(search_query)
     data = find_restaurent_within_max_distance(data, coordinates, max_distance, "price")
-    visualize(data[0], "rank", data[1])
+    visualize(data[0], "price", data[1])
 
 #Tird query to rank restaurants by distance or minimum delivery price 
 def get_restaurants_by_ranking(day, time, coordinates, max_distance, rank_by, max_price=None, arg = None):

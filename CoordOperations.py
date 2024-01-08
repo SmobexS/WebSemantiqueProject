@@ -68,6 +68,8 @@ def find_restaurent_within_max_distance(data, coordinates, max_distance, type):
                     bind["closingTime"] = binding["closingTime"]
                     bind["address"] = binding["address"]
                     bind["minOrderPrice"] = binding["delivery_cost"]
+                    bind["minOrderPrice"]["value"] = str(bind["minOrderPrice"]["value"])
+                    bind["minOrderPrice"]["value"] = bind["minOrderPrice"]["value"] [:4] + " EUR"
                     bind["distance from your location(m)"] = {"value":get_distance_between_coordinates(coordinates, (binding["latitude"]["value"], binding["longitude"]["value"]))*1000}
                     result["results"]["bindings"].append(bind)
             result = sort_by_distance(result)
