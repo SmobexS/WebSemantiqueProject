@@ -28,12 +28,20 @@ def visualize_table (nbr_resultat, code_er, table):
         print(f"{nbr_resultat} restaurants are open at this time.")
         valide = False
 
-        nb = input("How many restaurants do you want to see ? (All by default if you press Enter) : ") or nbr_resultat
+        valid_nb = False
+        while valid_nb == False :
+            nb = input("How many restaurants do you want to see ? (All by default if you press Enter) : ") or nbr_resultat
+            try :
+                nb = int(nb)
+                valid_nb = True
+            except :
+                print("Enter a valid number.")
+                valid_nb = False
         
         min = 0
 
         while valide == False:
-            nb = int(nb)
+
             if nb >= nbr_resultat:
                 nb = nbr_resultat
                 valide = True

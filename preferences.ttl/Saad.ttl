@@ -22,10 +22,10 @@ PREFIX pws:<https://ProjectW9s.com/subject/>
             schema:geoWithin [
                 a schema:GeoCircle ;
                 schema:geoMidpoint [
-                    schema:longitude 45.42155696959038;
-                    schema:latitude 4.428230684660482
+                    schema:latitude 45.42155696959038;
+                    schema:longitude 4.428230684660482
                 ] ;
-                schema:geoRadius 2000
+                schema:geoRadius 5000
             ]
         ] ;
         schema:itemOfferred wd:Q728206

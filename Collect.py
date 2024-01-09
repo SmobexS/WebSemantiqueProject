@@ -36,8 +36,7 @@ def collect(url='https://coopcycle.org/coopcycle.json?_=1704296951899'):
         graph = graph.serialize(destination="combined_rdf.txt" ,format='turtle')
         
 
-def execute_collect():
 
-    thread = threading.Thread(target=collect)
-    thread.start()
+
+thread = threading.Thread(target=collect)
     

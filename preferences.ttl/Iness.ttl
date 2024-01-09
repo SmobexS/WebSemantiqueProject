@@ -19,8 +19,8 @@
             schema:geoWithin [
                 a schema:GeoCircle ;
                 schema:geoMidpoint [
-                    schema:longitude 45.43775366089692;
-                    schema:latitude 4.390299772436285
+                    schema:latitude 45.43775366089692;
+                    schema:longitude 4.390299772436285
                 ] ;
                 schema:geoRadius 2000
             ]

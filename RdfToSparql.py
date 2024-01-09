@@ -191,7 +191,7 @@ def get_by_max_price(day, time, max_price=None):
     """ % (day,time,time ,max_price)
     return query
 
-def insert_query_user(name, location, postalcode, max_distance, max_price, longitude, latitude, ranked_by):
+def insert_query_user(uri_name, name, location, postalcode, max_distance, max_price, longitude, latitude, ranked_by):
 
     query = f"""
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns>
@@ -199,7 +199,7 @@ def insert_query_user(name, location, postalcode, max_distance, max_price, longi
         PREFIX schema: <http://schema.org/>
 
         INSERT DATA {{
-            <https://projectw9s.com/users/{name}>
+            <https://projectw9s.com/users/{uri_name}>
             a schema:Person ;
             schema:name "{name}" ;
             schema:address [
@@ -239,3 +239,41 @@ def search_user (name):
         SELECT * WHERE {{?sub schema:name "{name}" .}}"""
 
     return query
+
+def get_user (name):
+
+    query = f"""
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema>
+        PREFIX schema: <http://schema.org/>
+
+        Select ?sub ?location ?postalcode ?max_distance ?max_price ?longitude ?latitude ?ranked_by {{
+            ?sub
+            a schema:Person ;
+            schema:name "{name}" ;
+            schema:address [
+                a schema:PostalAddress ;
+                schema:postalCode ?postalcode ;
+                schema:addressLocality ?location
+            ] ;
+            schema:seeks [
+                schema:priceSpecification [
+                    schema:maxPrice ?max_price ;
+                    schema:priceCurrency "EUR"
+                ] ;
+                schema:availableAtOrFrom [
+                    schema:geoWithin [
+                        a schema:GeoCircle ;
+                        schema:geoMidpoint [
+                            schema:longitude ?longitude ;
+                            schema:latitude ?latitude
+                        ] ;
+                        schema:geoRadius ?max_distance
+                    ]
+                ] ;
+                schema:ranking ?ranked_by
+            ] .
+        }}"""
+
+    return query
+
