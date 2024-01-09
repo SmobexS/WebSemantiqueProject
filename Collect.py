@@ -33,7 +33,7 @@ def new_dataset (url='https://coopcycle.org/coopcycle.json?_=1704296951899'):
     insert_query = generate_insert_query(graph)
     graph = insert_data(insert_query)
 
-    graph = graph.serialize(destination="combined_rdf.txt" ,format='turtle')
+    graph = graph.serialize(destination="combined_rdf.ttl" ,format='turtle')
 
 def update_dataset (url='https://coopcycle.org/coopcycle.json?_=1704296951899'):
 
@@ -47,6 +47,6 @@ def update_dataset (url='https://coopcycle.org/coopcycle.json?_=1704296951899'):
 
     graph = insert_data(insert_query)
 
-    graph = graph.serialize(destination="combined_rdf.txt" ,format='turtle')
+    graph = graph.serialize(destination="combined_rdf.ttl" ,format='turtle')
 
     
