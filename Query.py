@@ -159,73 +159,49 @@ def get_user_preferences(uri):
 
 
 
-def main():
+def main(rank_by, uri):
     parser = argparse.ArgumentParser(description="CoopCycle restaurants query program:")
-    parser.add_argument("--rank-by", choices=["distance", "price"], help="Ranking restaurants by distance or price")
-    parser.add_argument("--user-preferences",  help="User preferences from an RDF file")
-    parser.add_argument("--manual-location", action="store_true", help="Input manual location")
-    args = parser.parse_args()
-    
-    if args.manual_location:
+    #parser.add_argument("--rank-by", choices=["distance", "price"], help="Ranking restaurants by distance or price")
+    #parser.add_argument("--user-preferences",  help="User preferences from an RDF file")
+    #parser.add_argument("--manual-location", action="store_true", help="Input manual location")
+    #args = parser.parse_args()
 
-        day, time = get_date_time()
-
-        if args.rank_by == "distance":
-            get_restaurants_by_ranking(day, time, None, None, "distance" , arg = None)
-        elif args.rank_by == "price" :
-            max_price = float(input("Enter the max price (15.00 EUR by defaukt if you press Enter): ") or 15.0)
-            get_restaurants_by_ranking(day, time, None, None, "price", max_price, arg = None)
-        else:
-            print("Invalid ranking option or user preferences. Please check your input.")
-
-    elif args.user_preferences:
-        user_pref_input = args.user_preferences
-
-        print(user_pref_input)
-        user_preferences = get_user_preferences(user_pref_input)
+    if uri != None:  
+        user_preferences = get_user_preferences(uri)
         #pref_uri = "https://www.emse.fr/~zimmermann/Teaching/SemWeb/Project/pref-charpenay.ttl"
-        #user_preferences = get_user_preferences(pref_uri)
-
         if 'seller' in user_preferences:
             print("User is looking for restaurants near:", user_preferences.get('location', "Not specified"))
             print("User is looking for restaurants from seller:", user_preferences['seller'])
             print("User has a maximum budget of", user_preferences['max_price'][0], user_preferences['max_price'][1])
 
-            if args.rank_by in ["distance", "price"]:
-                day, time = get_date_time()
-                
-                if 'location' in user_preferences:
-
-                    if validate_coordinates(user_preferences["location"][:2][0], user_preferences["location"][:2][1]) :
-                        coordinates = user_preferences['location'][:2]
-                        max_distance = user_preferences['location'][2]
-                    else :
-                        coordinates = None
-                        max_distance = None
-                else:
+            print(rank_by)
+            day, time = get_date_time()
+            
+            if 'location' in user_preferences:
+                if validate_coordinates(user_preferences["location"][:2][0], user_preferences["location"][:2][1]) :
+                    coordinates = user_preferences['location'][:2]
+                    max_distance = user_preferences['location'][2]
+                else :
                     coordinates = None
                     max_distance = None
-
-                location = {}
-                location['type'] = "geocord"
-                location['coordinates'] = coordinates
-
-                if args.rank_by == "distance":
-                    get_restaurants_by_ranking(day, time, location, max_distance, "distance", arg = 1)
-                elif args.rank_by == "price" and 'max_price' in user_preferences:
-                    max_price = user_preferences['max_price'][0]
-                    get_restaurants_by_ranking(day, time, coordinates, max_distance, "price", max_price, arg = 1)
-                else:
-                    print("Invalid ranking option or user preferences. Please check your input.")
             else:
-                print("Invalid ranking option. Please choose 'distance' or 'price'.")
+                coordinates = None
+                max_distance = None
+            location = {}
+            location['type'] = "geocord"
+            location['coordinates'] = coordinates
+            if rank_by == "distance":
+                get_restaurants_by_ranking(day, time, location, max_distance, "distance", arg = 1)
+            elif rank_by == "price" and 'max_price' in user_preferences:
+                max_price = user_preferences['max_price'][0]
+                get_restaurants_by_ranking(day, time, coordinates, max_distance, "price", max_price, arg = 1)
+            else:
+                print("Invalid ranking option or user preferences. Please check your input.")
         else:
-            print("Seller information not found in user preferences.")
+            print("Seller not in user")
     else:
-        if args.rank_by:
-            print("Error: When using --rank-by, --user-preferences is required.")
-        else:
-            print("Error: --rank-by option is required.")
+        print("Invalid URI, please enter a URL or a Turtle file location")
+    
 
 
 if __name__ == "__main__":

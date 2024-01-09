@@ -164,8 +164,16 @@ def usage_profile():
             print("preferences from graph")
 
         else :
+            link_ = ""
+            while link_ == "":
+                link_ = input("Please enter the link for preferences ( Must be a URL or a Turtle file .ttl ) :")
             ranked_by = input("How do you want to rank the results of your research : \n1. By distance (By default if you press Enter)\n2. By price\n") or "distance"
-            #main() #manuelle
+            
+            if ranked_by == 1:
+                rank = "distance"
+            else :
+                rank ="price"
+            main(rank,link_) 
             print("preferences manuelle")
     
     elif acount_quet.lower() == "y":
