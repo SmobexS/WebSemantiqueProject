@@ -136,7 +136,7 @@ def register():
                 print("Plese chose '1' or '2'")
                 valid_rank = False
 
-        graph = creat_user_graph(name, location, postalcode, max_distance, max_price, ranked_by, longitude, latitude)
+        graph = insert_user_graph(name, location, postalcode, max_distance, max_price, ranked_by, longitude, latitude)
 
         print("\nYour profile has been created. you can use your name in the futur to make your research.\n")
 
@@ -177,11 +177,11 @@ def usage_profile():
             name = input("Enter the full name that you have registerd with : ")
             if verify_name(name):
 
-                valid_name == True
+                valid_name = True
                 profile = get_profile(name)
 
                 #main()#preferences from graph
-                print("preferences from graph 7")
+                print("preferences from graph")
 
             else :
 
@@ -225,37 +225,77 @@ def verify_name(name):
         return False
 
 def get_profile(name):
-    search_query = search_user(name)
+    search_query = get_user(name)
     result = search_data(search_query, 'http://localhost:3030/Users/')
 
-    graph = ConjunctiveGraph()
+    for binding in result["results"]["bindings"] :
 
-    for binding in result['results']['bindings']:
-        if binding['sub']['type'] == 'uri':
-            subject = URIRef(binding['sub']['value'])
-        elif binding['sub']['type'] == 'bnode':
-            subject = BNode(binding['sub']['value'])
-        predicate = URIRef(binding['pred']['value'])
-        if binding['obj']['type'] == 'uri':
-            obj = URIRef(binding['obj']['value'])
-        elif binding['obj']['type'] == 'bnode':
-            obj = BNode(binding['obj']['value'])
-        elif binding['obj']['type'] == 'literal':
-            if binding['obj'].keys().__contains__('xml:lang'):
-                obj = Literal(binding['obj']['value'], lang=binding['obj']['xml:lang'])
-            elif binding['obj'].keys().__contains__('datatype'):
-                obj = Literal(binding['obj']['value'], datatype=URIRef(binding['obj']['datatype']))
-            else:
-                obj = Literal(binding['obj']['value'])
+        subject = "<" + binding["sub"]["value"] + ">"
+        location = binding["location"]["value"]
+        postalcode = binding["postalcode"]["value"]
+        max_distance = binding["max_distance"]["value"]
+        max_price = binding["max_price"]["value"]
+        ranked_by = binding["ranked_by"]["value"]
+        longitude = binding["longitude"]["value"]
+        latitude =binding["latitude"]["value"]
 
-        graph.add((subject, predicate, obj))
+    graph = info_user_to_graph(subject, name, location, postalcode, max_distance, max_price, ranked_by, longitude, latitude)
     
     return graph
 
-def creat_user_graph(name, location, postalcode, max_distance, max_price, ranked_by, longitude, latitude):
+def insert_user_graph(name, location, postalcode, max_distance, max_price, ranked_by, longitude, latitude):
+
+    if ranked_by == '1':
+        ranked_by = "distance"
+    else :
+        ranked_by = "price"
     
-    insert_query = insert_query_user(name, location, postalcode, max_distance, max_price, ranked_by, longitude, latitude)
-    graph = insert_data(insert_query, 'http://localhost:3030/Users/')
+    insert_query = insert_query_user(name, location, postalcode, max_distance, max_price, longitude, latitude, ranked_by)
+    insert_data(insert_query, 'http://localhost:3030/Users/')
+
+    subject = f"<https://projectw9s.com/users/{name}>"
+
+    graph = info_user_to_graph(subject, name, location, postalcode, max_distance, max_price, ranked_by, longitude, latitude)
+
+    return graph
+
+def info_user_to_graph (subject, name, location, postalcode, max_distance, max_price, ranked_by, longitude, latitude):
+
+    turrtle_str = f"""
+        @prefix schema: <http://schema.org/> .
+
+        {subject} 
+            a schema:Person ;
+            schema:name "{name}";
+            schema:address [
+            a schema:PostalAddress ;
+            schema:postalCode "{postalcode}" ;
+            schema:addressLocality "{location}"
+            ] ;
+            schema:seeks [
+                schema:priceSpecification [
+                schema:maxPrice {max_price} ;
+                schema:priceCurrency "EUR"
+                ] ;
+            schema:availableAtOrFrom [
+                schema:geoWithin [
+                    a schema:GeoCircle ;
+                    schema:geoMidpoint [
+                    schema:longitude {longitude} ;
+                    schema:latitude {latitude}
+                    ] ;
+                    schema:geoRadius {max_distance}
+                    ]
+                ] ;
+            schema:ranking "{ranked_by}"
+            ] .
+            """
+    
+    graph = ConjunctiveGraph()
+
+    graph.parse(data=turrtle_str, format="turtle")
+
+    print(graph.serialize(format="turtle"))
 
     return graph
 
