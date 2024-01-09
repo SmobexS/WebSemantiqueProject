@@ -231,6 +231,11 @@ def insert_query_user(name, location, postalcode, max_distance, max_price, longi
 
 def search_user (name):
 
-    query = f"SELECT * WHERE {{?sub schema:name {name} .}}"
+    query = f"""
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema>
+        PREFIX schema: <http://schema.org/>
+        
+        SELECT * WHERE {{?sub schema:name "{name}" .}}"""
 
     return query

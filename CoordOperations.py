@@ -30,6 +30,17 @@ def valid_place(place):
         print(f"Invalid Place: {e}")
         return False
     
+def valid_postalcode(codepostal):
+    geolocator = Nominatim(user_agent="WebSemantiqueProject")
+
+    try:
+        location = geolocator.geocode(codepostal)
+        print(f"Valid Place: {location.address}")
+        return True
+    except GeocoderQueryError as e:
+        print(f"Invalid Place: {e}")
+        return False
+    
 def find_restaurent_within_max_distance(data, coordinates, max_distance, type):
     if type == "distance" :
         if len(data["results"]["bindings"]) == 0:
@@ -70,7 +81,7 @@ def find_restaurent_within_max_distance(data, coordinates, max_distance, type):
                     bind["minimum order price"] = binding["delivery_cost"]
                     bind["minimum order price"]["value"] = str(bind["minimum order price"]["value"])
                     bind["minimum order price"]["value"] = bind["minimum order price"]["value"] [:4] + " EUR"
-                    bind["distance from your location(m)"] = {"value":get_distance_between_coordinates(coordinates, (binding["latitude"]["value"], binding["longitude"]["value"]))*1000}
+                    bind["distance from your location(m)"] = {"value":(get_distance_between_coordinates(coordinates, (binding["latitude"]["value"], binding["longitude"]["value"]))*1000)}
                     result["results"]["bindings"].append(bind)
             result = sort_by_distance(result)
             result = sort_by_price(result)
@@ -89,7 +100,7 @@ def within_max_distance(latitude, longitude, coordinates, max_distance):
 
 def get_distance_between_coordinates(coordinates1, coordinates2):
     distance_km = geodesic(coordinates1, coordinates2).kilometers
-    return float(distance_km)
+    return (float(distance_km))
 
 def sort_by_distance(data):
     data["results"]["bindings"].sort(key=lambda x: x["distance from your location(m)"]["value"])

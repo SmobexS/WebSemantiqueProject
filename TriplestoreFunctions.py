@@ -58,11 +58,14 @@ def delete_data(fuseki_endpoint_url='http://localhost:3030/ProjetWebSementic/'):
     triplets.query()
 
 def search_data(search_query, fuseki_endpoint_url='http://localhost:3030/ProjetWebSementic/'):
-    triplets = SPARQLWrapper(fuseki_endpoint_url + 'query')
-    triplets.setMethod(POST)
-    triplets.setReturnFormat(JSON)
-    triplets.setQuery(search_query)
-    result = triplets.query().convert()
+    try :
+        triplets = SPARQLWrapper(fuseki_endpoint_url + 'query')
+        triplets.setMethod(POST)
+        triplets.setReturnFormat(JSON)
+        triplets.setQuery(search_query)
+        result = triplets.query().convert()
+    except :
+        return (None)
     return(result)
 
 def visualize_data (data):

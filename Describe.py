@@ -1,6 +1,7 @@
 from TriplestoreFunctions import *
 from RdfToSparql import *
 from Query import main
+from CoordOperations import *
 
 def describe ():
     print("Welcome dear user.")
@@ -12,38 +13,43 @@ def describe ():
 
     while exit_val == False :
 
-        d = input("To start a search enter 1.\nTo exit the application enter 2.")
+        d = input("To start a search enter 1.\nTo exit the application enter 2.\n")
         
         if d == "1":
 
-            if did_a_seararch == False : 
+            s = 0 
 
-                usage_profile()
-                did_a_seararch = True
+            while s != 1 :
 
-            else: 
+                if did_a_seararch == False : 
 
-                conf = False
+                    usage_profile()
+                    did_a_seararch = True
 
-                while conf == False:
+                else: 
 
-                    other_search_dis = input("Do you want to make an other search (y/n): ") 
+                    conf = False
 
-                    if other_search_dis.lower() == "y" :
-                        
-                        usage_profile()
-                        conf = False
-                        
-                    elif other_search_dis.lower() == "n" :
+                    while conf == False:
 
-                        print("Thank you for using our application.\nGood Bye.")
-                        conf = True
-                        exit_val = True
+                        other_search_dis = input("Do you want to make an other search (y/n): ") 
 
-                    else :
+                        if other_search_dis.lower() == "y" :
+                            
+                            usage_profile()
+                            conf = False
+                            
+                        elif other_search_dis.lower() == "n" :
 
-                        print("Please chose 'y' for yes or 'n' for no.")
-                        conf = False
+                            print("Thank you for using our application.\nGood Bye.")
+                            conf = True
+                            exit_val = True
+                            s=1
+
+                        else :
+
+                            print("Please chose 'y' for yes or 'n' for no.")
+                            conf = False
 
         elif d == "2" :
 
@@ -89,14 +95,48 @@ def register():
             else :
                 valide_name = True
 
-        location = input("Enter your adress : ")
-        postalcode = input("Enter your postal code : ")
-        max_distance = input("Enter maximum distance in kilometers (5Km by default if you press Enter): ") or 5
-        max_distance = float(max_distance)
-        max_price = float(input("Enter the max price you prefer for your order (15 EUR by defaukt if you press Enter): ") or 15.0)
-        ranked_by = input("How do you prefer to rank the results of your research : \n1. By distance (By default if you press Enter)\n2. By price\n") or "distance"
+        valide_place = False
+        while valide_place == False :
+            location = input("Enter your adress : ")
+            if valid_place(location):
+                valide_place = True
 
-        graph = creat_user_graph(name, location, postalcode, max_distance, max_price, ranked_by)
+                max_distance = input("Enter maximum distance in kilometers (5Km by default if you press Enter): ") or 5
+                max_distance = float(max_distance)
+
+                coords = get_coordinates(location)
+
+                latitude = coords[0]
+                longitude = coords[1]
+
+            else:
+                print("Invalid place. Please try again.")
+                valide_place = False
+        
+        valide_codep = False
+        while valide_codep == False :
+            postalcode = input("Enter your postal code : ")
+            if valid_postalcode(location):
+                valide_codep = True
+
+            else:
+                print("Invalid postal code. Please try again.")
+                valide_codep = False
+                
+            
+        max_price = input("Enter the max price you prefer for your order (15 EUR by defaukt if you press Enter): ") or 15.0
+        max_price = float(max_price)
+        
+        valid_rank = False
+        while valid_rank == False :
+            ranked_by = input("How do you prefer to rank the results of your research : \n1. By distance (By default if you press Enter)\n2. By price\n") or "distance"
+            if ranked_by == "1" or ranked_by == "2":
+                valid_rank = True
+            else:
+                print("Plese chose '1' or '2'")
+                valid_rank = False
+
+        graph = creat_user_graph(name, location, postalcode, max_distance, max_price, ranked_by, longitude, latitude)
 
         print("\nYour profile has been created. you can use your name in the futur to make your research.\n")
 
@@ -120,11 +160,13 @@ def usage_profile():
 
         if result != None :
             
-            main() #preferences from graph
+            #main() #preferences from graph
+            print("preferences from graph")
 
         else :
             ranked_by = input("How do you want to rank the results of your research : \n1. By distance (By default if you press Enter)\n2. By price\n") or "distance"
-            main() #manuelle
+            #main() #manuelle
+            print("preferences manuelle")
     
     elif acount_quet.lower() == "y":
         
@@ -138,7 +180,8 @@ def usage_profile():
                 valid_name == True
                 profile = get_profile(name)
 
-                main()#preferences from graph
+                #main()#preferences from graph
+                print("preferences from graph 7")
 
             else :
 
@@ -174,19 +217,16 @@ def usage_profile():
 def verify_name(name):
 
     search_query = search_user(name)
-    result = search_query(search_query, 'http://localhost:3030/Users/')
+    result = search_data(search_query, 'http://localhost:3030/Users/')
 
-    for binding in result['results']['bindings']:
-        name_ext = binding["name"]["value"]
-
-    if name_ext == name :
-        return True
-    else :
+    if len(result ["results"]["bindings"]) != 0 :
+        return name
+    else:
         return False
 
 def get_profile(name):
     search_query = search_user(name)
-    result = search_query(search_query, 'http://localhost:3030/Users/')
+    result = search_data(search_query, 'http://localhost:3030/Users/')
 
     graph = ConjunctiveGraph()
 
@@ -218,3 +258,5 @@ def creat_user_graph(name, location, postalcode, max_distance, max_price, ranked
     graph = insert_data(insert_query, 'http://localhost:3030/Users/')
 
     return graph
+
+describe()
