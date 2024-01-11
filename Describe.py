@@ -138,6 +138,11 @@ def register():
 
         graph = insert_user_graph(name, location, postalcode, max_distance, max_price, ranked_by, longitude, latitude)
 
+        if ranked_by == '1':
+            ranked_by = "distance"
+        else :
+            ranked_by = "price"
+
         print("\nYour profile has been created. you can use your name in the futur to make your research.\n")
 
         return (graph, ranked_by)
