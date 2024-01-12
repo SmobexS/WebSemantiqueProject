@@ -214,7 +214,7 @@ def usage_profile():
                         print("Plese chose '1' or '2'")
                         valid_rank = False
 
-                    if ranked_by == 1:
+                    if ranked_by == "1":
                         rank = "distance"
                     else :
                         rank ="price"
